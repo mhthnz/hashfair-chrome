@@ -6,6 +6,7 @@
 #### Clear scrypt forecast:
 ![Clear scrypt forecast](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/forecast.png "Clear scrypt forecast")
 # How to install?
+#### 0) Disable or delete old `Hashfair` extension.
 #### 1) Download archive and unpack in some folder:
 ![Download](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/download.png "Download")
 #### 2) Open extension setting:
