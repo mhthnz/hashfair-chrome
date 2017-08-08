@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 		// Return result
 		if (currentDays === 0) {
-			return {avg: 0, last: lastClearPayout};
+			return {avg: 0, lastScrypt: lastClearPayout};
 		}
 		return {
 			avg: (amount_btc / currentDays).toFixed(8),
@@ -128,6 +128,24 @@ $(document).ready(function () {
 		var lastBtcPayout = 0.0;
 
 		/**
+		 * Days range for avg.
+		 * @type Integer
+		 */
+		var avgDays = 14;
+
+		/**
+		 * Number of calculated days.
+		 * @type Integer
+		 */
+		var currentDays = 0;
+
+		/**
+		 * Amount clear payout.
+		 * @type Float
+		 */
+		var amount_btc = 0.0;
+
+		/**
 		 * Find scrypt payout and maintenance by date.
 		 * @param  int    i  Index
 		 * @param  string el Html node
@@ -135,7 +153,7 @@ $(document).ready(function () {
 		 */
 		$.each(rows, function (i, el) {
 
-			if (lastBtcPayout > 0) {
+			if (currentDays >= avgDays) {
 				return;
 			}
 
@@ -155,11 +173,24 @@ $(document).ready(function () {
 			// Calculate clear payout 
 			var amount_el = $(el).find('td:nth-child(3)')[0];
 			var dirtyPrice = $(amount_el).find('span').length ? $($(amount_el).find('span')[0]).html() : $(amount_el).html();
+			amount_btc += (dirtyPrice - maintenance);
 			
-			lastBtcPayout = (dirtyPrice - maintenance).toFixed(8);
+			// Last btc clear payout
+			if (currentDays === 0) {
+				lastBtcPayout = (dirtyPrice - maintenance).toFixed(8);
+			}
+
+			currentDays++;
 		});
 
-		return lastBtcPayout;
+		// Return result
+		if (currentDays === 0) {
+			return {avg: 0, lastBtc: lastBtcPayout};
+		}
+		return {
+			avg: (amount_btc / currentDays).toFixed(8),
+			lastBtc: lastBtcPayout
+		};
 	}
 
 	/**
@@ -280,7 +311,6 @@ function redraw(gdata, scrypt, btc){
 		balance.push([ e.timestamp, e.balance ]);
 		payout.push([ e.timestamp, e.payout ]);
 		percent.push([ e.timestamp, parseInt(e.amount * 100 / e.payout) ]);
-
 		amount_avg += e.amount;
 		amount_usd_avg += e.amount_usd;
 	});
@@ -298,13 +328,21 @@ function redraw(gdata, scrypt, btc){
 		$('#last_amount').append('<span class="badge badge-warning">$'+last_amount_usd.toFixed(2)+'</span>');
 	}
 
-	var forecasts = $('#sha-row').find('.row:last').find('div.col-sm-6:last').find('.ibox-content');
-	forecasts = forecasts[0];
-	$(forecasts).find('p:nth(0)').html(forecast(amount_avg, '1d'));
-	$(forecasts).find('p:nth(1)').html(forecast((amount_avg*7), '1w'));
-	$(forecasts).find('p:nth(2)').html(forecast((amount_avg*30), '1m'));
-	$(forecasts).find('p:nth(3)').html(forecast((amount_avg*30*6), '6m'));
-	$(forecasts).find('p:nth(4)').html(forecast((amount_avg*30*12), '1y'));
+	// Btc avg
+	if (btc.avg !== 0) {
+		forecasts = $('#sha-row').find('.row:last').find('div.col-sm-6:last').find('.ibox-content');
+		forecasts = forecasts[0];
+		$(forecasts).find('p:nth(0)').html(forecast(btc.avg, '1d'));
+		$(forecasts).find('p:nth(1)').html(forecast((btc.avg*7), '1w'));
+		$(forecasts).find('p:nth(2)').html(forecast((btc.avg*30), '1m'));
+		$(forecasts).find('p:nth(3)').html(forecast((btc.avg*30*6), '6m'));
+		$(forecasts).find('p:nth(4)').html(forecast((btc.avg*30*12), '1y'));
+
+		// Last btc payout
+		var container = $('ul.stat-list:first')[0];
+		$(container).find('li:eq(2)').find('span').css('background-color', '#f5b35c');
+		$(container).find('li:eq(2)').find('h3').html(btc.lastBtc + ' BTC &nbsp;' + '<span class="badge badge-warning">$'+(btc.lastBtc * btc_price).toFixed(2)+'</span>');
+	}
 
 	// Scrypt avg
 	if (scrypt.avg !== 0) {
@@ -320,13 +358,6 @@ function redraw(gdata, scrypt, btc){
 		var container = $('ul.stat-list:first')[0];
 		$(container).find('li:eq(3)').find('span').css('background-color', '#f5b35c');
 		$(container).find('li:eq(3)').find('h3').html(scrypt.lastScrypt + ' BTC &nbsp;' + '<span class="badge badge-warning">$'+(scrypt.lastScrypt * btc_price).toFixed(2)+'</span>');
-	}
-
-	// Last bitcoin payout
-	if(btc > 0) {
-		var container = $('ul.stat-list:first')[0];
-		$(container).find('li:eq(2)').find('span').css('background-color', '#f5b35c');
-		$(container).find('li:eq(2)').find('h3').html(btc + ' BTC &nbsp;' + '<span class="badge badge-warning">$'+(btc * btc_price).toFixed(2)+'</span>');
 	}
 
 	balanceoptions = {
