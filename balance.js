@@ -10,6 +10,14 @@ function create_placeholder(id, title) {
 }
 
 var btc_price = $('#btcprice').val();
+
+// Dev option to make fix bitcoint price
+$.ajax({url:chrome.extension.getURL('dev/btc_price.html'), async:false}).done(function(page){
+	if (page !== '') {
+		btc_price = parseFloat(page);
+	}
+});
+
 var balance_el = $('h2.m-l-md.m-b-none:first');
 var usd_balance = parseFloat($(balance_el).html()) * parseFloat(btc_price);
 var text = $(balance_el).html() + ' <span class="badge badge-warning">$' + usd_balance.toFixed(2) + '</span>';

@@ -146,7 +146,7 @@ $(document).ready(function () {
 		var amount_btc = 0.0;
 
 		/**
-		 * Find scrypt payout and maintenance by date.
+		 * Find sha payout and maintenance by date.
 		 * @param  int    i  Index
 		 * @param  string el Html node
 		 * @return Object {avg:float}
@@ -179,7 +179,7 @@ $(document).ready(function () {
 			if (currentDays === 0) {
 				lastBtcPayout = (dirtyPrice - maintenance).toFixed(8);
 			}
-
+			console.log(date, dirtyPrice, maintenance, "Clear btc" + (dirtyPrice - maintenance).toFixed(8), "$" + ((dirtyPrice - maintenance) * btc_price).toFixed(2) ); 
 			currentDays++;
 		});
 
@@ -235,10 +235,25 @@ $(document).ready(function () {
 		}
 	}
 
+
 	var btc_price = parseFloat($('#btcprice').val());
 
+	// Dev option to make fix bitcoint price
+	$.ajax({url:chrome.extension.getURL('dev/btc_price.html'), async:false}).done(function(page){
+		if (page !== '') {
+			btc_price = parseFloat(page);
+		}
+	});
 
 	$.ajax('https://hashflare.io/panel/history').done(function(data){
+
+		// Dev option to make fix history page
+		$.ajax({url:chrome.extension.getURL('dev/history.html'), async:false}).done(function(page){
+			if (page !== '') {
+				data = page;
+			}
+		});
+
 		var tbody = $(data).find('td:contains("SHA-256 maintenance (BTC)"):first').closest('tbody');
 		var rows = $(tbody).find('tr');
 		var gdata = [];
@@ -288,6 +303,14 @@ $(document).ready(function () {
 
 function forecast(amount, title) {
 	var btc_price = parseFloat($('#btcprice').val());
+	
+	// Dev option to make fix bitcoint price
+	$.ajax({url:chrome.extension.getURL('dev/btc_price.html'), async:false}).done(function(page){
+		if (page !== '') {
+			btc_price = parseFloat(page);
+		}
+	});
+
 	amount = parseFloat(amount);
 	return amount.toFixed(8) + ' BTC = ' + (amount*btc_price).toFixed(2) + ' USD <span class="pull-right badge badge-warning">'+title+'</span>';
 
