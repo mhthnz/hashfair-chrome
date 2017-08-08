@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
       "js": [ "vendor/jquery.js", "vendor/moment.min.js", "helpers.js", "helpers/modal.js", "index.js", "vendor/flot/jquery.flot.js", "vendor/flot/jquery.flot.time.js", "vendor/flot/jquery.flot.tooltip.min.js", "balance.js", "modals/donate/donate.js", "modals/about/about.js", "charts.js" ],
-      "matches": [ "https://hashflare.io/panel*" ]
+      "matches": [ "https://hashflare.io/panel",  "https://hashflare.io/panel?*"]
    } ],
    "description": "Help HashFlare customers to see and analyze real payout data.",
    "icons": {
@@ -10,8 +10,8 @@
    },
    "manifest_version": 2,
    "name": "HashFair",
-   "permissions": [ "https://hashflare.io/panel", "https://*.btc.com/*" ],
+   "permissions": [ "https://hashflare.io/panel", "https://*.btc.com/*", "https://www.litecoinpool.org/pools" ],
    "short_name": "Analytics for HashFlare cloud mining",
-   "version": "1.4",
+   "version": "1.5",
    "web_accessible_resources": [ "modals/*", "helpers/*", "images/*" ]
 }

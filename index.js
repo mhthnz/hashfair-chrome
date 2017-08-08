@@ -17,7 +17,7 @@ $(document).ready(function () {
 		 * Days range for avg.
 		 * @type Integer
 		 */
-		var avgDays = 14;
+		var avgDays = 3;
 
 		/**
 		 * Number of calculated days.
@@ -131,7 +131,7 @@ $(document).ready(function () {
 		 * Days range for avg.
 		 * @type Integer
 		 */
-		var avgDays = 14;
+		var avgDays = 3;
 
 		/**
 		 * Number of calculated days.
@@ -174,7 +174,7 @@ $(document).ready(function () {
 			var amount_el = $(el).find('td:nth-child(3)')[0];
 			var dirtyPrice = $(amount_el).find('span').length ? $($(amount_el).find('span')[0]).html() : $(amount_el).html();
 			amount_btc += (dirtyPrice - maintenance);
-			
+
 			// Last btc clear payout
 			if (currentDays === 0) {
 				lastBtcPayout = (dirtyPrice - maintenance).toFixed(8);
@@ -342,6 +342,17 @@ function redraw(gdata, scrypt, btc){
 		var container = $('ul.stat-list:first')[0];
 		$(container).find('li:eq(2)').find('span').css('background-color', '#f5b35c');
 		$(container).find('li:eq(2)').find('h3').html(btc.lastBtc + ' BTC &nbsp;' + '<span class="badge badge-warning">$'+(btc.lastBtc * btc_price).toFixed(2)+'</span>');
+
+		// Calculate scrypt hashrate
+		var btc_block = $('#sha-row').find('h3.no-margins');
+		if ($(btc_block).length) {
+			var btc_total_hashrate = parseFloat($(btc_block).parent('div').find('h1').html());
+			if (btc_total_hashrate > 0) {
+				$(btc_block).find('br').remove();
+				var btc_hashrate = (btc.lastBtc / btc_total_hashrate).toFixed(8);
+				$('<span style="font-weight:bold;">1 TH = ~ ' + btc_hashrate + ' BTC <span class="badge badge-warning">$'+(btc_hashrate * btc_price).toFixed(2)+'</span></span>').insertBefore($(btc_block));
+			}
+		}
 	}
 
 	// Scrypt avg
@@ -358,6 +369,17 @@ function redraw(gdata, scrypt, btc){
 		var container = $('ul.stat-list:first')[0];
 		$(container).find('li:eq(3)').find('span').css('background-color', '#f5b35c');
 		$(container).find('li:eq(3)').find('h3').html(scrypt.lastScrypt + ' BTC &nbsp;' + '<span class="badge badge-warning">$'+(scrypt.lastScrypt * btc_price).toFixed(2)+'</span>');
+
+		// Calculate scrypt hashrate
+		var scrypt_block = $('#scrypt-row').find('h3.no-margins');
+		if ($(scrypt_block).length) {
+			var scrypt_total_hashrate = parseFloat($(scrypt_block).parent('div').find('h1').html());
+			if (scrypt_total_hashrate > 0) {
+				$(scrypt_block).find('br').remove();
+				var scrypt_hashrate = (scrypt.lastScrypt / scrypt_total_hashrate).toFixed(8);
+				$('<span style="font-weight:bold;">1 MH = ~ ' + scrypt_hashrate + ' BTC <span class="badge badge-warning">$'+(scrypt_hashrate * btc_price).toFixed(2)+'</span></span>').insertBefore($(scrypt_block));
+			}
+		}
 	}
 
 	balanceoptions = {

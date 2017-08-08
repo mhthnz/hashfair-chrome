@@ -98,5 +98,86 @@ $(document).ready(function () {
        $('#pool_rows').html(output);
     });
 
+    // Litecoin pools
+    $.ajax('https://www.litecoinpool.org/pools').done(function(data) {
+
+        $('#scrypt-row').find('.fa-cog').closest('a').after('<a data-toggle="modal" data-target="#chartScryptModal"><i class="fa fa-pie-chart fa-lg" style="color: #f5b35c"></i></a>');
+
+        $('body').append(
+        '<div class="modal fade" id="chartScryptModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true" data-replace="true">\
+            <div class="modal-dialog modal-lg">\
+                <div class="modal-content">\
+                    <div class="modal-header">\
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>\
+                        <h4 class="modal-title">Scrypt Pools Hashrate</h4>\
+                    </div>\
+                    <div class="modal-body">\
+                    <div class="row">\
+                        <div class="col-md-12" id="pools_chart">\
+                            <table class="table">\
+                                <thead>\
+                                <tr>\
+                                    <th width="100">Pool</th>\
+                                    <th width="100">Hashrate</th>\
+                                    <th width="100">Blocks per hour</th>\
+                                </tr>\
+                                </thead>\
+                                <tbody id="scrypt_pool_rows"></tbody>\
+                                \
+                            </table>\
+                        </div>\
+                    </div>\
+                    </div>\
+                    \
+                    <div class="modal-footer">\
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>');
+
+        // Pools table and blocks table
+        var table = $(data).find('tr.minor-row').closest('table');
+        var blocks = $(data).find('td.nowrap').closest('table');
+
+        // Calculate start date and end date, get difference
+        var startDate = moment($(blocks).find('tr').has("td.nowrap").first().html(), 'YYYY-MM-DD HH:mm');
+        var endDate = moment($(blocks).find('tr').has("td.nowrap").last().html(), 'YYYY-MM-DD HH:mm');
+        var totalHours = Math.ceil(moment.duration(startDate.diff(endDate)).asHours());
+        
+        /**
+         * Get number of block per hour by pool name.
+         * @param  string pool 
+         * @return float
+         */
+        function getBlocks(pool)
+        {
+            return parseInt($(blocks).find('td:contains("'+pool+'")').length);
+        }
+
+        // Create data object
+        var pools = [];
+        $.each($(table).find('tr').has('td > span'), function(i, element) {
+            var pool = $(element).find('td:eq(1)').text();
+            pools.push({
+                pool: pool,
+                hashrate: $(element).find('td.value').html(),
+                blocks: getBlocks(pool)
+            });
+
+        });
+
+        // Render table content
+        var output = '';
+        $.each(pools, function (i, el) {
+            output += '<tr>' +
+               '<td>'+el.pool+'</td>'+
+               '<td>'+ el.hashrate+'</td>' +
+               '<td>'+ el.blocks +'</td>' +
+               '</tr>';
+        });
+
+        $('#scrypt_pool_rows').html(output);
+    });
 
 });

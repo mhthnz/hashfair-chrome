@@ -1,5 +1,6 @@
-# Hashfair fork
+# Hashfair fork 
 #### Fork of chrome extension: [https://chrome.google.com/webstore/detail/hashfair/bjkankegappneledmkoephpodobfmlhh?hl=en](https://chrome.google.com/webstore/detail/hashfair/bjkankegappneledmkoephpodobfmlhh?hl=en)
+#### Plugin v1.5
 
 # What's new?
 #### Clear last scrypt and sha payouts:
@@ -8,6 +9,11 @@
 ![Clear scrypt forecast](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/forecast.png "Clear scrypt forecast")
 #### Clear sha forecast:
 ![Clear sha forecast](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/btc-forecast.png "Clear sha forecast")
+#### Sha and scrypt hashrate:
+![Sha and scrypt hashrate](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/hashrate.png "Sha and scrypt hashrate")
+#### Scrypt pools stats:
+![Scrypt pools stats](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/scrypt-pools.png "Scrypt pools stats")
+![Scrypt pools stats](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/pools-stat.png "Scrypt pools stats")
 
 # How to install?
 #### 0) Disable or delete old `Hashfair` extension.
