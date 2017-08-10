@@ -1,6 +1,7 @@
-# Hashfair fork 
-#### Fork of chrome extension: [https://chrome.google.com/webstore/detail/hashfair/bjkankegappneledmkoephpodobfmlhh?hl=en](https://chrome.google.com/webstore/detail/hashfair/bjkankegappneledmkoephpodobfmlhh?hl=en)
-#### Plugin v1.5
+# Hashfair reborn version 1.5
+
+#### Analytics for HashFlare cloud mining. Extends the capabilities of an ordinary hashfair.
+Install extension: [https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh](https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh)
 
 # What's new?
 #### Clear last scrypt and sha payouts:
@@ -15,13 +16,3 @@
 ![Scrypt pools stats](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/scrypt-pools.png "Scrypt pools stats")
 ![Scrypt pools stats](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/pools-stat.png "Scrypt pools stats")
 
-# How to install?
-#### 0) Disable or delete old `Hashfair` extension.
-#### 1) Download archive and unpack in some folder:
-![Download](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/download.png "Download")
-#### 2) Open extension setting:
-![Open extension settings](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/settings.png "Open extension settings")
-#### 3) Enable developer mode and load unpacked extension:
-![Load unpacked extension](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/extension.png "Load unpacked extension")
-#### 4) And select folder with extension:
-![Select folder](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/choose-dir.png "Select folder")
