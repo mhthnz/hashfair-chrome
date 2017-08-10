@@ -16,3 +16,4 @@ Install extension: [https://chrome.google.com/webstore/detail/hashfair-reborn/og
 ![Scrypt pools stats](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/scrypt-pools.png "Scrypt pools stats")
 ![Scrypt pools stats](https://raw.githubusercontent.com/mhthnz/hashfair-chrome/master/readme/pools-stat.png "Scrypt pools stats")
 
+Contact with me in telegram: `@mhthnz`
