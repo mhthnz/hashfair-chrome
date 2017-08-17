@@ -1,0 +1,14 @@
+[
+    'vendor/i18n/I18n.js',
+    "vendor/items/Item.js",
+	'vendor/items/BtcPayoutItem.js',
+    "vendor/items/DashItem.js",
+    "vendor/items/EthItem.js",
+	"vendor/collections/Collection.js",
+    "vendor/collections/PayoutsCollection.js",
+    "vendor/collections/WithdrawalsCollection.js",
+    "vendor/collections/PurchasesCollection.js",
+    "vendor/collections/ContractsCollection.js",
+	"Application.js",
+    "Config.js",
+];
