@@ -25,6 +25,10 @@ var applicationModules = [
     {
         module: 'Balance',
         description: "Show clear balance and bitcoin price.",
+    },
+    {
+        module: 'Donate',
+        description: "",
     }
 ];
 
@@ -35,8 +39,9 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
 
     // Parse sha hashrate
     let btc_block = $('#sha-row').find('h3.no-margins');
+    let btc_total_hashrate = 0;
     if ($(btc_block).length) {
-        let btc_total_hashrate = parseFloat($(btc_block).parent('div').find('h1').html());
+        btc_total_hashrate = parseFloat($(btc_block).parent('div').find('h1').html());
 
         // Add dependent modules from sha hashrate
         if (btc_total_hashrate > 0) {
@@ -54,13 +59,18 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
                 description: 'Show clear SHA hashrate for now.',
                 dependency: {hashrate: btc_total_hashrate}
             });
+            applicationModules.push({
+                module: 'LastShaPayout',
+                description: 'Show clear last sha payout'
+            });
         }
     }
 
     // Parse scrypt hashrate
     let scrypt_block = $('#scrypt-row').find('h3.no-margins');
+    let scrypt_total_hashrate = 0;
     if ($(scrypt_block).length) {
-        let scrypt_total_hashrate = parseFloat($(scrypt_block).parent('div').find('h1').html());
+        scrypt_total_hashrate = parseFloat($(scrypt_block).parent('div').find('h1').html());
 
         // Add dependent modules from sha hashrate
         if (scrypt_total_hashrate > 0) {
@@ -78,7 +88,19 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
                 description: 'Show clear SCRYPT hashrate for now.',
                 dependency: {hashrate: scrypt_total_hashrate}
             });
+            applicationModules.push({
+                module: 'LastScryptPayout',
+                description: 'Show clear last scrypt payout'
+            });
         }
+    }
+
+    // If we have either sha or scrypt contract
+    if (scrypt_total_hashrate > 0 || btc_total_hashrate > 0) {
+        applicationModules.push({
+            module: 'LastSummaryBtcPayout',
+            description: 'Show clear last scrypt payout'
+        });
     }
 
     // Apply modules

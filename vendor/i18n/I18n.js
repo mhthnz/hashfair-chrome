@@ -12,6 +12,23 @@ class I18n
     }
 
     /**
+     * Find in text translate placeholders and replace.
+     *
+     * {category:key}
+     *
+     * @param {string} text
+     */
+    processText(text) {
+        var instance = this;
+        return text.replace(/\{([A-z0-9_]+?):([A-z0-9_]+?)(?::({[^}]+}))?\}/g, function(match, category, key, placeholders) {
+            if (placeholders !== undefined) {
+                return instance.t(category, key, eval('(' + placeholders + ')'));
+            }
+            return instance.t(category, key);
+        });
+    }
+
+    /**
      * Function for get current translate.
      *
      * Examples:

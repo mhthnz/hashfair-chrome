@@ -62,13 +62,13 @@ ajax.get = function (url, data, callback, async) {
 
 // Autoload classes and components
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
-    var tab = chrome.tabs.get(tabId, function(tab) {
-        if (info.status === 'complete' && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
+    chrome.tabs.get(tabId, function(tab) {
+        if (info.status === 'complete' && tab !== undefined && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
             ajax.get(chrome.extension.getURL('Autoload.js'), [], function(data) {
                 var autoload = eval(data);
                 for (var i = 0; i < autoload.length; i++) {
-                    chrome.tabs.executeScript( null, {file: autoload[i]});
-                    console.log('Load file: ' + autoload[i], new Date().getTime());
+                    chrome.tabs.executeScript(tabId, {file: autoload[i]});
+                    console.log('Load file: ' + autoload[i]);
                 }
             });
         }
