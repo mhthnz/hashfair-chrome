@@ -5,7 +5,7 @@
  	Project is opensource.
  	
 # Install:
-#####Install via chrome market:
+##### Install via chrome market:
 [https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh](https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh)
 ##### Or you can download archive and install via developer mode in google chrome.
 
@@ -28,7 +28,7 @@
 # How to add your language to plugin?
 if you want to add support your language to plugin:
 1) Need fork my repository.
-2) Copy and rename file [eng.js](https://github.com/mhthnz/hashfair-chrome/tree/master/readme), filename must be in format [`ISO 639-3`](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) (`rus.js`, `eng.js`, ...etc)
+2) Copy and rename file [eng.js](https://github.com/mhthnz/hashfair-chrome/blob/master/languages/eng.js), filename must be in format [`ISO 639-3`](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes) (`rus.js`, `eng.js`, ...etc)
 3) Upload translate file in your repository in folder: `languages`
 4) Make pull request to my repository
 
