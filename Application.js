@@ -12,7 +12,7 @@ class Application
 	/**
 	 * Constructor of application class.
 	 * Init class properties.
-	 * @param  {array} config Array of config contains:
+	 * @param  {[]} config Array of config contains:
 	 *  
 	 * config.modules = ([
 	 *        {module: 'chart', dependency: Object},
@@ -21,7 +21,7 @@ class Application
 	 * ])
 	 * config.btcPrice = 1231
 	 * config.historyPage = Html code
-	 * config.language = 'en'
+	 * config.language = 'eng'
      *
 	 */
     constructor(config = {}) 

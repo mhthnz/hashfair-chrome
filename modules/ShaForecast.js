@@ -15,6 +15,10 @@ class ShaForecast {
          * @type {number}
          */
         this.avgDays = 3;
+
+        if (typeof OPTIONS != 'undefined' && OPTIONS.hasOwnProperty('revenueShaForecast')) {
+            this.avgDays = OPTIONS.revenueShaForecast;
+        }
     }
 
     /**

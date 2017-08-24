@@ -13,26 +13,17 @@
  * @type {{}}
  */
 var applicationConfig = {
-    initialized: false
 };
 
 // List of modules which you want to load
 var applicationModules = [
     {
-        module: 'BalanceChart',
-        description: "Show clear balance chart.",
+        module: 'BalanceChart'
     },
     {
-        module: 'Balance',
-        description: "Show clear balance and bitcoin price.",
-    },
-    {
-        module: 'Donate',
-        description: "",
+        module: 'Balance'
     }
 ];
-
-
 
 // Get history page
 $.ajax('https://hashflare.io/panel/history').done(function (content) {
@@ -47,21 +38,17 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
         if (btc_total_hashrate > 0) {
             applicationModules.push({
                 module: 'ShaChart',
-                description: 'Show clear SHA chart revenue per 1 TH/s.',
                 dependency: {hashrate: btc_total_hashrate}
             });
             applicationModules.push({
-                module: 'ShaForecast',
-                description: 'Show clear SHA revenue forecast.'
+                module: 'ShaForecast'
             });
             applicationModules.push({
                 module: 'ShaHashrate',
-                description: 'Show clear SHA hashrate for now.',
                 dependency: {hashrate: btc_total_hashrate}
             });
             applicationModules.push({
-                module: 'LastShaPayout',
-                description: 'Show clear last sha payout'
+                module: 'LastShaPayout'
             });
         }
     }
@@ -76,21 +63,45 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
         if (scrypt_total_hashrate > 0) {
             applicationModules.push({
                 module: 'ScryptChart',
-                description: 'Show clear SCRYPT chart revenue per 1 MH/s.',
                 dependency: {hashrate: scrypt_total_hashrate}
             });
             applicationModules.push({
-                module: 'ScryptForecast',
-                description: 'Show clear SCRYPT revenue forecast.'
+                module: 'ScryptForecast'
             });
             applicationModules.push({
                 module: 'ScryptHashrate',
-                description: 'Show clear SCRYPT hashrate for now.',
                 dependency: {hashrate: scrypt_total_hashrate}
             });
             applicationModules.push({
-                module: 'LastScryptPayout',
-                description: 'Show clear last scrypt payout'
+                module: 'LastScryptPayout'
+            });
+        }
+    }
+
+    // Parse dash hashrate
+    let dash_block = $('#dash-row').find('h3.no-margins');
+    let dash_total_hashrate = 0;
+    if ($(dash_block).length) {
+        dash_total_hashrate = parseFloat($(dash_block).parent('div').find('h1').html());
+
+        // Add dependent modules from dash hashrate
+        if (dash_total_hashrate > 0) {
+            applicationModules.push({
+                module: 'DashBalance'
+            });
+        }
+    }
+
+    // Parse dash hashrate
+    let eth_block = $('#ether-row').find('h3.no-margins');
+    let eth_total_hashrate = 0;
+    if ($(eth_block).length) {
+        eth_total_hashrate = parseFloat($(eth_block).parent('div').find('h1').html());
+
+        // Add dependent modules from eth hashrate
+        if (eth_total_hashrate > 0) {
+            applicationModules.push({
+                module: 'EthBalance'
             });
         }
     }
@@ -98,16 +109,43 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
     // If we have either sha or scrypt contract
     if (scrypt_total_hashrate > 0 || btc_total_hashrate > 0) {
         applicationModules.push({
-            module: 'LastSummaryBtcPayout',
-            description: 'Show clear last scrypt payout'
+            module: 'LastSummaryBtcPayout'
         });
+        applicationModules.push({
+            module: 'LastAvgBtc'
+        });
+    }
+
+
+    if (typeof OPTIONS != 'undefined') {
+
+        // Filter modules by options
+        if (OPTIONS.hasOwnProperty('modules') && Array.isArray(OPTIONS.modules) && OPTIONS.modules.length > 0) {
+            applicationModules = applicationModules.filter(function(element) {
+                return OPTIONS.modules.includes(element.module);
+            });
+        }
+
+        // Language
+        if (OPTIONS.hasOwnProperty('languageStrategy')) {
+            if (OPTIONS.languageStrategy === Options.autodetect) {
+                let elem = $(document).find("li>a:contains('English'):first").closest("ul").find(".active").find("a");
+                if (elem.length > 0) {
+                    applicationConfig.language = $(elem).attr("href").replace(/\?lang=([a-z]{3})/, '$1');
+                }
+            } else {
+                applicationConfig.language = OPTIONS.languageStrategy;
+            }
+        }
     }
 
     // Apply modules
     if (applicationModules.length > 0) {
         applicationConfig.modules = applicationModules;
     }
-
+    applicationConfig.modules.push({
+        module: 'Donate'
+    });
     // Parse btc price
     let btcPrice = parseFloat($('#btcprice').val());
 

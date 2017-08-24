@@ -15,6 +15,10 @@ class ScryptForecast {
          * @type {number}
          */
         this.avgDays = 3;
+
+        if (typeof OPTIONS != 'undefined' && OPTIONS.hasOwnProperty('revenueScryptForecast')) {
+            this.avgDays = OPTIONS.revenueScryptForecast;
+        }
     }
 
     /**

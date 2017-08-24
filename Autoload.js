@@ -1,4 +1,5 @@
 [
+    'vendor/Options.js',
     'vendor/i18n/I18n.js',
     "vendor/items/Item.js",
 	'vendor/items/BtcPayoutItem.js',

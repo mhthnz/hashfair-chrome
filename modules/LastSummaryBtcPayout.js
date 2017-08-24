@@ -1,5 +1,5 @@
 /**
- * Last clear scrypt payout.
+ * Last summary btc payout.
  */
 class LastSummaryBtcPayout
 {

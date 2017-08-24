@@ -102,4 +102,23 @@ class PayoutsCollection extends Collection
         return result;
     }
 
+    /**
+     * Get payouts group by date.
+     * @returns {{}}
+     */
+    groupByDate(type = null)
+    {
+        var items = type === null ? this.getItems() : this.getSpecifyItems(type);
+        var result = {};
+
+        for(var i = 0; i < items.length; i++) {
+            let date = items[i].date;
+            if (!result.hasOwnProperty(date)) {
+                result[date] = [];
+            }
+            result[date].push(items[i]);
+        }
+        return result;
+    }
+
 }

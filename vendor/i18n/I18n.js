@@ -4,10 +4,10 @@ class I18n
      * Constructor of class.
      * @param {string} language Current language
      */
-    constructor(language = 'en')
+    constructor(language = 'eng')
     {
         this.language = language;
-        this.defaultLanguage = 'en';
+        this.defaultLanguage = 'eng';
         this.cache = {};
     }
 
@@ -33,7 +33,7 @@ class I18n
      *
      * Examples:
      *
-     * var instance = new I18n('en');
+     * var instance = new I18n('eng');
      *
      * // Usual
      * instance.t("chart", "revenue per 1 TH/s.");

@@ -47,29 +47,20 @@ ajax.get = function (url, data, callback, async) {
     ajax.send(url + (query.length ? '?' + query.join('&') : ''), callback, 'GET', null, async)
 };
 
-
-/**
- *             chrome.runtime.getPackageDirectoryEntry(function(root) {
-                root.getDirectory("languages", {create: false}, function(localesdir) {
-                    var reader = localesdir.createReader();
-                    // Assumes that there are fewer than 100 locales; otherwise see DirectoryReader docs
-                    reader.readEntries(function(results) {
-                        alert(results.map(function(de){return de.name;}).sort());
-                    });
-                });
-            });
- */
-
 // Autoload classes and components
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
     chrome.tabs.get(tabId, function(tab) {
         if (info.status === 'complete' && tab !== undefined && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
-            ajax.get(chrome.extension.getURL('Autoload.js'), [], function(data) {
-                var autoload = eval(data);
-                for (var i = 0; i < autoload.length; i++) {
-                    chrome.tabs.executeScript(tabId, {file: autoload[i]});
-                    console.log('Load file: ' + autoload[i]);
-                }
+            new Options(function(options) {
+                chrome.tabs.executeScript(tabId, {code: 'const OPTIONS = JSON.parse(\'' + JSON.stringify(options) +'\');'});
+
+                ajax.get(chrome.extension.getURL('Autoload.js'), [], function(data) {
+                    var autoload = eval(data);
+                    for (var i = 0; i < autoload.length; i++) {
+                        chrome.tabs.executeScript(tabId, {file: autoload[i]});
+                        console.log('Load file: ' + autoload[i]);
+                    }
+                });
             });
         }
     });
