@@ -9,6 +9,12 @@
 [https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh](https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh)
 ##### Or you can download archive and install via developer mode in google chrome.
 
+# What's news in version 2.1?
+ - Improved performance and bug fixes
+ - Added SHA and SCRYPT pools hashrate
+ - Finalized balance charts
+ - Added Italian language (thank `@topddealsadmin`)
+
 # What's news in version 2.0?
 - Completely changed the architecture to a modular
 - Added options page
