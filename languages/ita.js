@@ -9,7 +9,7 @@
         title: 'Chi sono :)',
         start_text: 'Sono lo sviluppatore di questo plugin. Lavoro sul plugin volontariamente. Sono motivato dalle vostre donazioni e grazie.',
         help_me: 'Puoi ringraziarmi in diversi modi',
-        github: 'Puoi votare il plugin o eseguire un fork a questo indirizzo {url}',
+        github: 'Puoi votare il plugin o eseguire un fork in {url}',
         chrome_market: 'Puoi votare in {url}',
         btc: 'Puoi inviare qualche bitcoin al mio portafoglio: <b>19VWsFYgh9eB6j42A1kg6yyWmRePyQQrRv</b>',
         telegram: 'Puoi ringraziarmi personalmente in telegram: <b><a target="_blank" href="https://t.me/mhthnz">@mhthnz</a></b>',
