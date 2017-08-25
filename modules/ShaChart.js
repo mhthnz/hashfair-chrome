@@ -100,7 +100,6 @@ class ShaChart {
             ]);
         }
         return result;
-
     }
 
 }

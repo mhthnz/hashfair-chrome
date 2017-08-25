@@ -98,6 +98,7 @@ class Collection
 	{
 		this.items.sort(function(a, b) {
 			return moment(b.date, "DD.MM.YYYY").toDate() - moment(a.date, "DD.MM.YYYY").toDate();
-		})
+		});
+		this.sorted = true;
 	}
 }

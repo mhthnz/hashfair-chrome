@@ -51,7 +51,7 @@ ajax.get = function (url, data, callback, async) {
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
     chrome.tabs.get(tabId, function(tab) {
 
-        if (info.status === 'complete' && tab !== undefined && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
+        if (info.status === 'loading' && tab !== undefined && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
             new Options(function(options) {
 
                 // Check loaded script or no
