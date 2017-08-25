@@ -50,17 +50,25 @@ ajax.get = function (url, data, callback, async) {
 // Autoload classes and components
 chrome.tabs.onUpdated.addListener(function (tabId, info) {
     chrome.tabs.get(tabId, function(tab) {
+
         if (info.status === 'complete' && tab !== undefined && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
             new Options(function(options) {
-                chrome.tabs.executeScript(tabId, {code: 'const OPTIONS = JSON.parse(\'' + JSON.stringify(options) +'\');'});
 
-                ajax.get(chrome.extension.getURL('Autoload.js'), [], function(data) {
-                    var autoload = eval(data);
-                    for (var i = 0; i < autoload.length; i++) {
-                        chrome.tabs.executeScript(tabId, {file: autoload[i]});
-                        console.log('Load file: ' + autoload[i]);
+                // Check loaded script or no
+                chrome.tabs.executeScript(tabId, {code: '(function(){return typeof OPTIONS === "undefined"})();'}, function(result) {
+                    if (result[0]) {
+                        chrome.tabs.executeScript(tabId, {code: 'const OPTIONS = JSON.parse(\'' + JSON.stringify(options) +'\');'});
+
+                        ajax.get(chrome.extension.getURL('Autoload.js'), [], function(data) {
+                            var autoload = eval(data);
+                            for (var i = 0; i < autoload.length; i++) {
+                                chrome.tabs.executeScript(tabId, {file: autoload[i]});
+                                console.log('Load file: ' + autoload[i]);
+                            }
+                        });
                     }
                 });
+
             });
         }
     });
