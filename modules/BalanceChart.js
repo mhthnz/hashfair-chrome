@@ -9,6 +9,7 @@ class BalanceChart {
         app.log("Init BalanceChart class.");
         this.app = app;
         this.dependency = dependency;
+        this.payoutsItems = null;
     }
 
     /**
@@ -25,15 +26,17 @@ class BalanceChart {
     }
 
     makeChartData() {
-        var payouts = this.getPayouts();
+        let payouts = this.getPayouts();
 
         if (payouts.length === 0) {
             return false;
         }
 
+        let language = this.app.getI18n();
+
         var chartData = [
             {
-                label: "BTC payout&nbsp;",
+                label: "BTC "+language.t("charts", "payout")+"&nbsp;",
                 data: payouts,
                 color: "#f5b35c",
                 bars: {
@@ -48,6 +51,50 @@ class BalanceChart {
                 highlightColor: "rgba(245, 179, 92, 0.6)"
             }
         ];
+
+        let usdPayouts = this.payoutsToUsd(payouts);
+        if (usdPayouts.length > 0) {
+            chartData.push({
+                label: "USD "+language.t("charts", "payout"),
+                data: usdPayouts,
+                yaxis: 3,
+                color: "#f5b35c",
+                lines: {
+                    lineWidth: 3,
+                    show: true,
+                    fill: false,
+                    fillColor: {
+                        colors: [{
+                            opacity: 1
+                        }, {
+                            opacity: 0
+                        }]
+                    }
+                }
+            })
+        }
+
+        let leftPayouts = this.getLeft();
+        if (leftPayouts.length > 0) {
+            chartData.push({
+                label: "% " +language.t("charts", "maintenance"),
+                data: leftPayouts,
+                yaxis: 4,
+                color: "#f5b35c",
+                lines: {
+                    lineWidth: 1,
+                    show: true,
+                    fill: false,
+                    fillColor: {
+                        colors: [{
+                            opacity: 0.1
+                        }, {
+                            opacity: 0
+                        }]
+                    }
+                }
+            });
+        }
 
         $.each($('script'), function (index, element) {
             var result = $(element).html().match(/var\s*balances\s*=\s*([^;]+);/);
@@ -80,6 +127,39 @@ class BalanceChart {
             }
         });
         return chartData;
+    }
+
+    payoutsToUsd(payouts) {
+        var newArr = JSON.parse(JSON.stringify(payouts));
+        for (var index = 0; index < newArr.length; index++) {
+            newArr[index][1] = (parseFloat(newArr[index][1]) * this.app.btcPrice).toFixed(2);
+        }
+        return newArr;
+    }
+
+    getLeft()
+    {
+        let payouts = this.getPayoutsItems();
+
+        // Make array for chart
+        var result = [];
+        for (let prop in payouts) {
+
+            let date = (moment(prop, "DD.MM.YYYY").toDate().getTime());
+            let price = 0;
+            let maintenance = 0;
+            for (var i = 0; i < payouts[prop].length; i++) {
+                price = price + parseFloat(payouts[prop][i].payout);
+                maintenance = maintenance + parseFloat(payouts[prop][i].maintenance);
+            }
+            result.push([date, parseFloat((maintenance / price) * 100).toFixed(2)]);
+
+            // Cut array
+            if (result.length > 14) {
+                result.splice(14, result.length - 14);
+            }
+        }
+        return result;
     }
 
     makeChartOptions() {
@@ -145,39 +225,33 @@ class BalanceChart {
     }
 
     getPayouts() {
-        var payouts = this.app.getPayouts();
-        var btc = payouts.getSpecifyItems(PayoutsCollection.typeBTC);
-        var days = [];
-
-        // Btc amount group by date
-        for (var i = 0; i < btc.length; i++) {
-            var added = false;
-            for (var j = 0; j < days.length; j++) {
-                if (days[j].date === btc[i].date) {
-                    days[j].amount = parseFloat(days[j].amount) + parseFloat(btc[i].getClearPayout());
-                    added = true;
-                    break;
-                }
-            }
-            if (!added) {
-                days.push({date: btc[i].date, amount: parseFloat(btc[i].getClearPayout())});
-            }
-        }
+        let payouts = this.getPayoutsItems();
 
         // Make array for chart
         var result = [];
-        for (var i = 0; i < days.length; i++) {
-            let date = (moment(days[i].date, "DD.MM.YYYY").toDate().getTime());
-            result.push([date, parseFloat(days[i].amount).toFixed(8)]);
-        }
+        for (let prop in payouts) {
 
-        // Cut array
-        if (result.length > 14) {
-            result.splice(14, result.length - 1);
-        }
+            let date = (moment(prop, "DD.MM.YYYY").toDate().getTime());
+            let price = 0;
+            for (var i = 0; i < payouts[prop].length; i++) {
+                price = price + parseFloat(payouts[prop][i].getClearPayout());
+            }
+            result.push([date, parseFloat(price).toFixed(8)]);
 
+            // Cut array
+            if (result.length > 14) {
+                result.splice(14, result.length - 14);
+            }
+        }
         return result;
+    }
 
+    getPayoutsItems()
+    {
+        if (this.payoutsItems === null) {
+            this.payoutsItems = this.app.getPayouts().groupByDate(PayoutsCollection.typeBTC);
+        }
+        return this.payoutsItems;
     }
 
 }

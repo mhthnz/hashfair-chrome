@@ -5,6 +5,10 @@
         LastSummaryBtc: 'Last summary btc payout (SHA, SCRYPT)',
         DailyAverage: 'Daily average {days} days period (SHA, SCRYPT)'
     },
+    charts: {
+        Payout: 'Payout',
+        maintenance: 'Maintenance'
+    },
     donate: {
         title: 'About me :)',
         start_text: 'I am the developer of this plugin. I\'m working on a plugin on a voluntary basis. I am motivated by your donations and thanks.',
