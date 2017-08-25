@@ -35,6 +35,7 @@
         autodetectLanguage: 'Detect language automatically',
         eng: 'English',
         rus: 'Russian',
+        ita: 'Italiano',
         modulesSetting: 'Modules for initiate',
         revenueShaForecast: 'Number of days to calculate SHA revenue forecast',
         revenueScryptForecast: 'Number of days to calculate SCRYPT revenue forecast',
