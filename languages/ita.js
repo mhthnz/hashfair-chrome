@@ -2,7 +2,7 @@
     UI: {
         Close: 'Chiudi',
         AboutMe: 'Chi sono',
-        LastSummaryBtc: 'L'ultimo pagamento (SHA, SCRYPT)',
+        LastSummaryBtc: 'L\'ultimo pagamento (SHA, SCRYPT)',
         DailyAverage: 'Media giornaliera sul periodo di {days} giorni (SHA, SCRYPT)'
     },
     donate: {
@@ -21,27 +21,28 @@
         autodetectLanguage: 'Scegli la lingua automaticamente',
         eng: 'Inglese',
         rus: 'Russo',
-        modulesSetting: 'Modules for initiate',
-        revenueShaForecast: 'Number of days to calculate SHA revenue forecast',
-        revenueScryptForecast: 'Number of days to calculate SCRYPT revenue forecast',
-        days: '{days} d.',
-        save: 'Save',
-        settingsSaved: 'Settings saved'
+        ita: 'Italiano',
+        modulesSetting: 'Moduli da inizializzare',
+        revenueShaForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
+        revenueScryptForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
+        days: '{days} giorni',
+        save: 'Salva',
+        settingsSaved: 'Impostazioni salvate'
     },
     modules: {
-        Balance: 'Show balance and bitcoin price.',
-        BalanceChart: 'Show clear balance chart.',
-        DashBalance: 'Show dash balance in usd.',
-        EthBalance: 'Show eth balance in usd.',
-        LastAvgBtc: 'Show daily average.',
-        LastScryptPayout: 'Show clear last scrypt payout.',
-        LastShaPayout: 'Show clear last sha payout.',
-        LastSummaryBtcPayout: 'Show last summary clear payout (SHA + SCRYPT).',
-        ScryptChart: 'Show clear SCRYPT chart revenue per 1 MH/s.',
-        ScryptForecast: 'Show clear SCRYPT revenue forecast.',
-        ScryptHashrate: 'Show clear SCRYPT hashrate for now.',
-        ShaChart: 'Show clear SHA chart revenue per 1 TH/s.',
-        ShaForecast: 'Show clear SHA revenue forecast.',
-        ShaHashrate: 'Show clear SHA hashrate for now.'
+        Balance: 'Visualizza bilancio e prezzo del bitcoin.',
+        BalanceChart: 'Visualizza il grafico del bilancio netto.',
+        DashBalance: 'Visualizza il bilancio di Dash in USD.',
+        EthBalance: 'Visualizza il bilancio di Eth in USD.',
+        LastAvgBtc: 'Visualizza la media giornaliera.',
+        LastScryptPayout: 'Visualizza l\'ultimo payout scrypt.',
+        LastShaPayout: 'Visualizza l\'ultimo pagamento netto di SHA-256.',
+        LastSummaryBtcPayout: 'Visualizza l\'ultimo pagamento netto (SHA + SCRYPT).',
+        ScryptChart: 'Visualizza il grafico di entrate nette di 1MH/s di SCRYPT',
+        ScryptForecast: 'Visualizza le previsioni di entrate nette per SCRYPT.',
+        ScryptHashrate: 'Visualizza l\'hashrate netto attuale di SCRYPT.',
+        ShaChart: 'Visualizza il grafico di entrate nette di 1TH/s di SHA',
+        ShaForecast: 'Visualizza le previsioni di entrate nette per SHA.',
+        ShaHashrate: 'Visualizza l\'hashrate netto attuale di SHA.'
     }
 }
