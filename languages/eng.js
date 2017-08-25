@@ -9,6 +9,16 @@
         Payout: 'Payout',
         maintenance: 'Maintenance'
     },
+    pools: {
+        pool: 'Pool',
+        hashrate: 'Hashrate',
+        lucky: 'Lucky',
+        your_share: 'Your share',
+        distribution: 'Distribution',
+        sha_header: 'Sha Pools Hashrate',
+        scrypt_header: 'Scrypt Pools Hashrate',
+        blocks_per_hour: 'Blocks per hour'
+    },
     donate: {
         title: 'About me :)',
         start_text: 'I am the developer of this plugin. I\'m working on a plugin on a voluntary basis. I am motivated by your donations and thanks.',
@@ -46,6 +56,8 @@
         ScryptHashrate: 'Show clear SCRYPT hashrate for now.',
         ShaChart: 'Show clear SHA chart revenue per 1 TH/s.',
         ShaForecast: 'Show clear SHA revenue forecast.',
-        ShaHashrate: 'Show clear SHA hashrate for now.'
+        ShaHashrate: 'Show clear SHA hashrate for now.',
+        ShaPools: 'Show sha pools hashrate.',
+        ScryptPools: 'Show scrypt pools hashrate.'
     }
 }

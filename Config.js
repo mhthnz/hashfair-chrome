@@ -22,6 +22,12 @@ var applicationModules = [
     },
     {
         module: 'Balance'
+    },
+    {
+        module: 'ShaPools'
+    },
+    {
+        module: 'ScryptPools'
     }
 ];
 
