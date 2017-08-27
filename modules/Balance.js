@@ -12,9 +12,9 @@ class Balance
 	 */
 	constructor(app, dependency = null) 
 	{
-		app.log("Init Balance class.");
 		this.app = app;
 		this.dependency = dependency;
+		this.runDate = new Date().getTime();
 	}
 
     /**
@@ -32,6 +32,7 @@ class Balance
         $(btc).html(text);
         $('.ibox-title:first').find('h5').append(' <font color="black">|</font> <span id="price_disclaimer"></span>');
         $('#price_disclaimer').css('color', '#f5b35c').css('font-weight', 'bold').text('1 BTC = $'+this.app.btcPrice);
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
 	}
 
 }

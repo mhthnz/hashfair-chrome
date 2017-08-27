@@ -6,10 +6,10 @@ class ShaPools {
      * @param  object|null dependency   If isset - object, else - null
      */
     constructor(app, dependency = null) {
-        app.log("Init ShaPools class.");
         this.app = app;
         this.dependency = dependency;
         this.hashrate = 0;
+        this.runDate = new Date().getTime();
     }
 
     /**
@@ -45,6 +45,7 @@ class ShaPools {
                 });
                 $(document).find('#sha_pool_rows').html(output);
                 $('#sha-row').find('.fa-cog').closest('a').after('<a data-toggle="modal" data-target="#shaModal"><i class="fa fa-pie-chart fa-lg" style="color: #f5b35c"></i></a>');
+                pool.app.log(pool.constructor.name + " loaded in: " + (new Date().getTime() - pool.runDate) + " ms.");
             });
         });
     }

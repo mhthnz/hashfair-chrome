@@ -11,9 +11,9 @@ class LastSummaryBtcPayout
 	 */
 	constructor(app, dependency = null) 
 	{
-		app.log("Init LastSummaryBtcPayout class.");
 		this.app = app;
 		this.dependency = dependency;
+        this.runDate = new Date().getTime();
 	}
 
     /**
@@ -40,6 +40,7 @@ class LastSummaryBtcPayout
         $(target).find('.p-xxs').css('background-color', '#f5b35c');
         $(target).find('h3').html(payout.toFixed(8) + ' BTC &nbsp; <span class="badge badge-warning">$' + (payout * this.app.btcPrice).toFixed(2) + '</span>');
         $(target).find('small').text(translate.t('UI', 'LastSummaryBtc'));
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
 	}
 
 }

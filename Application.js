@@ -248,64 +248,95 @@ class Application
      */
     initPayouts()
     {
+        let time = new Date().getTime();
+
         // Get table
-        var rows = $(this.historyPage).find('th:contains("(ZEC)"):first').closest('table').find('tbody').find('tr');
-        if ($(rows).length == 0) {
+        var table = $(this.historyPage).find('table').last();
+        if ($(table).length == 0) {
             this.payoutsInit = true;
             return;
         }
 
+        var data = {};
+
+        $(table).find("tr").each(function(i, v){
+            let row = [];
+            $(this).children('td').each(function(j, vv){
+                let text = '';
+                // If date
+                if (j === 1) {
+                    text = $(this).text();
+                    text = text.substr(0, 8);
+                } else {
+                    text = $(this).text();
+                }
+                row[j] = text;
+            });
+            if (row.length > 0) {
+                let date = row[1];
+                if (!data.hasOwnProperty(date)) {
+                    data[date] = [];
+                }
+                data[date].push(row);
+            }
+        });
+
+
         var app = this;
 
         // Fill payouts items
-        $.each(rows, function(index, element) {
+        for(var prop in data) {
 
-            // Get name of tr
-            var title = $($(element).find("td:nth-child(1)")[0]).html();
-            if (title !== "Scrypt payout (BTC)" && title !== "SHA-256 payout (BTC)" && title !== "X11 payout (DASH)" && title !== "ETHASH payout (ETH)") {
-                return;
-            }
+            let date = prop;
 
-            // Parse date.
-            var date = $($(element).find('td:nth-child(2)')[0]).html();
-            date = date.replace(/([^\s]+)\s*[^\s]*/, '$1');
+            for (var i = 0; i < data[date].length; i++) {
 
-            // Add item to collection
-            var scrypt = false;
-            switch(title) {
+                let row = data[date][i];
 
-                // Btc
-                case 'Scrypt payout (BTC)':
-                    scrypt = true;
-                case 'SHA-256 payout (BTC)': {
+                // Get name of tr
+                var title = row[0];
+                if (title !== "Scrypt payout (BTC)" && title !== "SHA-256 payout (BTC)" && title !== "X11 payout (DASH)" && title !== "ETHASH payout (ETH)") {
+                    continue;
+                }
 
-                    // Calculate maintenance
-                    var maintenance = app.getMaintenance(date, rows, scrypt === false ? "SHA-256 maintenance (BTC)" : "Scrypt maintenance (BTC)");
-                    if (maintenance === false) {
-                        return;
+                // Add item to collection
+                var scrypt = false;
+                switch(title) {
+
+                    // Btc
+                    case 'Scrypt payout (BTC)':
+                        scrypt = true;
+                    case 'SHA-256 payout (BTC)': {
+
+                        // Calculate maintenance
+                        let main = new Date().getTime();
+                        var maintenance = app.getMaintenance(data[date], scrypt === false ? "SHA-256 maintenance (BTC)" : "Scrypt maintenance (BTC)");
+                        if (maintenance === false) {
+                            return;
+                        }
+                        var price = row[2];
+                        app.payouts.addItem(new BtcPayoutItem(date, parseFloat(price), parseFloat(maintenance), scrypt === false ? BtcPayoutItem.typeSha : BtcPayoutItem.typeScrypt));
+                        break;
                     }
-                    var amount_el = $(element).find('td:nth-child(3)')[0];
-                    var dirtyPrice = $(amount_el).find('span').length ? $($(amount_el).find('span')[0]).html() : $(amount_el).html();
-                    app.payouts.addItem(new BtcPayoutItem(date, parseFloat(dirtyPrice), parseFloat(maintenance), scrypt === false ? BtcPayoutItem.typeSha : BtcPayoutItem.typeScrypt));
-                    break;
-                }
 
-                // Dash
-                case 'X11 payout (DASH)': {
-                    var amount_el = $(element).find('td:nth-child(7)')[0];
-                    var price = $(amount_el).find('span').length ? $($(amount_el).find('span')[0]).html() : $(amount_el).html();
-                    app.payouts.addItem(new DashItem(date, parseFloat(price)));
-                    break;
-                }
+                    // Dash
+                    case 'X11 payout (DASH)': {
+                        var price = row[6];
+                        app.payouts.addItem(new DashItem(date, parseFloat(price)));
+                        break;
+                    }
 
-                // Ethereum
-                case 'ETHASH payout (ETH)': {
-                    var amount_el = $(element).find('td:nth-child(5)')[0];
-                    var price = $(amount_el).find('span').length ? $($(amount_el).find('span')[0]).html() : $(amount_el).html();
-                    app.payouts.addItem(new EthItem(date, parseFloat(price)));
+                    // Ethereum
+                    case 'ETHASH payout (ETH)': {
+                        var price = row[4];
+                        app.payouts.addItem(new EthItem(date, parseFloat(price)));
+                    }
                 }
             }
-        });
+
+        };
+        console.log(app.payouts);
+        this.log("Payouts init in " + (new Date().getTime() - time) + " ms.");
         this.payoutsInit = true;
     }
 
@@ -316,24 +347,12 @@ class Application
      * @param {string}text
      * @returns {float|boolean}
      */
-    getMaintenance(date, rows, text)
+    getMaintenance(rows, text)
     {
-        var tds = $(rows).find('td:contains("'+date+'")');
-        if (tds.length === 0) {
-            return false;
-        }
-        var maintenance = 0.0;
-        $.each(tds, function(i, el) {
-            if ($(el).parent('tr').find('td:contains("' + text + '")').length === 0) {
-                return;
-            } else {
-                var amount_el = $(el).parent('tr').find('td:nth-child(3)')[0];
-                maintenance = $(amount_el).find('span').length ? $($(amount_el).find('span')[0]).html() : $(amount_el).html();
-                return false;
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].includes(text)) {
+                return rows[i][2];
             }
-        });
-        if (maintenance > 0) {
-            return maintenance;
         }
         return false;
     }

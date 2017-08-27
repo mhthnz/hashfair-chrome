@@ -166,9 +166,9 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
     }
 
     // Run application
-    $(document).ready(function(){
-        (new Application(applicationConfig)).run();
-    });
+
+    (new Application(applicationConfig)).run();
+
 });
 
 

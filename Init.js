@@ -52,10 +52,12 @@ chrome.tabs.onUpdated.addListener(function (tabId, info) {
     chrome.tabs.get(tabId, function(tab) {
 
         if (info.status === 'loading' && tab !== undefined && /^https:\/\/hashflare\.io\/panel([?#].*|\/[?#]*\s*$|$)/i.test(tab.url)) {
-            new Options(function(options) {
 
+            new Options(function(options) {
+                
                 // Check loaded script or no
                 chrome.tabs.executeScript(tabId, {code: '(function(){return typeof OPTIONS === "undefined"})();'}, function(result) {
+
                     if (result[0]) {
                         chrome.tabs.executeScript(tabId, {code: 'const OPTIONS = JSON.parse(\'' + JSON.stringify(options) +'\');'});
 

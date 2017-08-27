@@ -6,9 +6,9 @@ class ShaHashrate{
      * @param  object|null dependency   If isset - object, else - null
      */
     constructor(app, dependency = null) {
-        app.log("Init ShaHashrate class.");
         this.app = app;
         this.dependency = dependency;
+        this.runDate = new Date().getTime();
     }
 
     /**
@@ -25,7 +25,7 @@ class ShaHashrate{
         $(btc_block).find('br').remove();
         let btcHashrate = (parseFloat(payout.getClearPayout()) / parseFloat(this.dependency.hashrate)).toFixed(8);
         $('<span style="font-weight:bold;">1 TH = ~ ' + btcHashrate + ' BTC <span class="badge badge-warning">$'+(btcHashrate * this.app.btcPrice).toFixed(2)+'</span></span>').insertBefore($(btc_block));
-
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
     }
 
 }

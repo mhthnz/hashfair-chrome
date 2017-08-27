@@ -11,9 +11,9 @@ class EthBalance
 	 */
 	constructor(app, dependency = null) 
 	{
-		app.log("Init EthBalance class.");
 		this.app = app;
 		this.dependency = dependency;
+        this.runDate = new Date().getTime();
 	}
 
     /**
@@ -37,12 +37,12 @@ class EthBalance
         let last = $(eth).closest('ul').find("h3.m-l-md.m-b-none");
         if (last.length > 0) {
         	let lastEth = parseFloat($(last).html());
-        	;
         	if (lastEth > 0) {
         		let lastText = $(last).html() + ' <span class="badge badge-warning">$' + (lastEth * ethPrice).toFixed(2) + '</span>';
         		$(last).html(lastText);
 			}
 		}
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
 	}
 
     /**

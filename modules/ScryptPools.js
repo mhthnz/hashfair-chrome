@@ -6,10 +6,10 @@ class ScryptPools {
      * @param  object|null dependency   If isset - object, else - null
      */
     constructor(app, dependency = null) {
-        app.log("Init ScryptPools class.");
         this.app = app;
         this.dependency = dependency;
         this.hashrate = 0;
+        this.runDate = new Date().getTime();
     }
 
     /**
@@ -57,7 +57,7 @@ class ScryptPools {
                 });
 
                 $('#scrypt_pool_rows').html(output);
-
+                current.app.log(current.constructor.name + " loaded in: " + (new Date().getTime() - current.runDate) + " ms.");
             });
         });
     }
