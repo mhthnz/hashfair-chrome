@@ -6,18 +6,18 @@
         DailyAverage: 'Media giornaliera sul periodo di {days} giorni (SHA, SCRYPT)'
     },
     charts: {
-        Payout: 'Payout',
-            maintenance: 'Mantenimento'
+        payout: 'Payout',
+        maintenance: 'Mantenimento'
     },
     pools: {
         pool: 'Pool',
-            hashrate: 'Hashrate',
-            lucky: 'Lucky',
-            your_share: 'Your share',
-            distribution: 'Distribuzione',
-            sha_header: 'Hashrate della pool sha',
-            scrypt_header: 'Hashrate della pool scrypt',
-            blocks_per_hour: 'Blocchi per ora'
+        hashrate: 'Hashrate',
+        lucky: 'Lucky',
+        your_share: 'Your share',
+        distribution: 'Distribuzione',
+        sha_header: 'Hashrate della pool sha',
+        scrypt_header: 'Hashrate della pool scrypt',
+        blocks_per_hour: 'Blocchi per ora'
     },
     donate: {
         title: 'Chi sono :)',
@@ -36,6 +36,7 @@
         eng: 'Inglese',
         rus: 'Russo',
         ita: 'Italiano',
+        ind: 'Indonesia',
         modulesSetting: 'Moduli da inizializzare',
         revenueShaForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
         revenueScryptForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',

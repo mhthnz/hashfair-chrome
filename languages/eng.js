@@ -6,7 +6,7 @@
         DailyAverage: 'Daily average {days} days period (SHA, SCRYPT)'
     },
     charts: {
-        Payout: 'Payout',
+        payout: 'Payout',
         maintenance: 'Maintenance'
     },
     pools: {
@@ -36,6 +36,7 @@
         eng: 'English',
         rus: 'Russian',
         ita: 'Italiano',
+        ind: 'Indonesia',
         modulesSetting: 'Modules for initiate',
         revenueShaForecast: 'Number of days to calculate SHA revenue forecast',
         revenueScryptForecast: 'Number of days to calculate SCRYPT revenue forecast',

@@ -229,7 +229,7 @@ class Application
      * Load module from `modules` folder. Dependency is optional.
      * @param  object module {module: 'moduleName', dependency: Object}
      */
-    loadModule(module) 
+    async loadModule(module)
     {
         this.log("Loading module: " + module.module);
         var file = chrome.extension.getURL('modules/' + module.module + '.js');

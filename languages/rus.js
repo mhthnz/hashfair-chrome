@@ -36,6 +36,7 @@
         eng: 'English',
         rus: 'Русский',
         ita: 'Italiano',
+        ind: 'Indonesia',
         modulesSetting: 'Запускаемые модули',
         revenueShaForecast: 'Количество дней для учета в прогнозе доходности SHA',
         revenueScryptForecast: 'Количество дней для учета в прогнозе доходности SCRYPT',
