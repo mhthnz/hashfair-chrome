@@ -6,22 +6,22 @@
         DailyAverage: 'Media giornaliera sul periodo di {days} giorni (SHA, SCRYPT)'
     },
     charts: {
-        payout: 'Payout',
-        maintenance: 'Mantenimento'
+        payout: 'Pagamento',
+        maintenance: 'Tassa di mantenimento'
     },
     pools: {
         pool: 'Pool',
         hashrate: 'Hashrate',
         lucky: 'Lucky',
-        your_share: 'Your share',
+        your_share: 'Il tuo share',
         distribution: 'Distribuzione',
-        sha_header: 'Hashrate della pool sha',
-        scrypt_header: 'Hashrate della pool scrypt',
+        sha_header: 'Hashrate della pool SHA',
+        scrypt_header: 'Hashrate della pool Scrypt',
         blocks_per_hour: 'Blocchi per ora'
     },
     donate: {
         title: 'Chi sono :)',
-        start_text: 'Sono lo sviluppatore di questo plugin. Lavoro sul plugin volontariamente. Sono motivato dalle vostre donazioni e grazie.',
+        start_text: 'Sono lo sviluppatore di questo plugin e lavoro sul plugin volontariamente; sono motivato dalle vostre donazioni, grazie.',
         help_me: 'Puoi ringraziarmi in diversi modi',
         github: 'Puoi votare il plugin o eseguire un fork in {url}',
         chrome_market: 'Puoi votare in {url}',
@@ -36,8 +36,8 @@
         eng: 'Inglese',
         rus: 'Russo',
         ita: 'Italiano',
-        por: 'Portuguese',
-        ind: 'Indonesia',
+        por: 'Portoghese',
+        ind: 'Indonesiano',
         modulesSetting: 'Moduli da inizializzare',
         revenueShaForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
         revenueScryptForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
@@ -60,5 +60,22 @@
         ShaChart: 'Visualizza il grafico di entrate nette di 1TH/s di SHA',
         ShaForecast: 'Visualizza le previsioni di entrate nette per SHA.',
         ShaHashrate: 'Visualizza l\'hashrate netto attuale di SHA.'
+    },
+    payback: {
+        btc_payback: 'BTC Payback',
+        purchases: 'Acquisti',
+        number_of_purchases: 'Numero di acquisti',
+        total_invested: 'FOndi totali investiti',
+        invested_without_reinvest: 'Investiti senza modalità di re-investimento',
+        withdrawals: 'Prelievi',
+        number_of_withdrawals: 'Numero di prelievi',
+        total_out_amount: 'Total out amount',
+        amount_with_comission: 'Quantità con commissioni',
+        payback: 'Payback',
+        payback_percent: 'Percentuale di payback',
+        payback_percent_with_comssion: 'Percentuale di payback (con commissioni)',
+        payback_without_reinvest: 'Payback (senza modalità di re-investimento)',
+        payback_complete: 'Payback completato in',
+        payback_complete_days: '{days} giorni',
     }
 }
