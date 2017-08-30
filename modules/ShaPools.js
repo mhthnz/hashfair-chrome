@@ -20,33 +20,42 @@ class ShaPools {
         let pool = this;
         $.ajax(chrome.extension.getURL('modals/sha-pools.html')).done(function(modal){
 
-            var hashrate_str = $('#sha-row').find('.fa-flash').closest('div').find('h1').html();
-            if(hashrate_str) {
-                var hashrate_num = parseFloat(hashrate_str);
-                var hashrate_pow = 1;
-                if(hashrate_str.indexOf("TH/s") > 0) {
-                    hashrate_pow = 1000;
-                }
-                pool.hashrate = hashrate_num * hashrate_pow;
-            }
             modal = translate.processText(modal);
-            $.ajax('https://btc.com/stats/api/realtime/poolHashrate').done(function(data) {
-                $('body').append(modal);
-                var output = '';
-                $.each(data.data, function (i, el) {
-                    output += '<tr>' +
-                        '<td><a href="'+ el.link +'" target="_blank">'+el.relayed_by+'</a></td>' +
-                        '<td>'+ (el.real_hashrate ? (el.real_hashrate + ' PH/s') : '---') +'</td>' +
-                        '<td>'+ pool.diff(el.diff_24h) +'</td>' +
-                        '<td>'+ (el.lucky ? ((el.lucky * 100).toFixed(2) + '%') : '---') +'</td>' +
-                        '<td>'+ pool.basic_point(parseFloat(el.hashrate)) +'</td>' +
-                        '<td>'+ pool.scale(el.cur2max_percent) +'</td>' +
-                        '</tr>';
+            $('body').append(modal);
+            $('#sha-row').find('.fa-cog').closest('a').after('<a data-toggle="modal" data-target="#shaModal"><i class="fa fa-pie-chart fa-lg" style="color: #f5b35c"></i></a>');
+
+            $(document).find('a[data-target="#shaModal"]').click(function() {
+
+                if ($(document).find('#sha_pool_rows').text() !== '') {
+                    return;
+                }
+
+                var hashrate_str = $('#sha-row').find('.fa-flash').closest('div').find('h1').html();
+                if (hashrate_str) {
+                    var hashrate_num = parseFloat(hashrate_str);
+                    var hashrate_pow = 1;
+                    if (hashrate_str.indexOf("TH/s") > 0) {
+                        hashrate_pow = 1000;
+                    }
+                    pool.hashrate = hashrate_num * hashrate_pow;
+                }
+                $.ajax('https://btc.com/stats/api/realtime/poolHashrate').done(function (data) {
+
+                    var output = '';
+                    $.each(data.data, function (i, el) {
+                        output += '<tr>' +
+                            '<td><a href="' + el.link + '" target="_blank">' + el.relayed_by + '</a></td>' +
+                            '<td>' + (el.real_hashrate ? (el.real_hashrate + ' PH/s') : '---') + '</td>' +
+                            '<td>' + pool.diff(el.diff_24h) + '</td>' +
+                            '<td>' + (el.lucky ? ((el.lucky * 100).toFixed(2) + '%') : '---') + '</td>' +
+                            '<td>' + pool.basic_point(parseFloat(el.hashrate)) + '</td>' +
+                            '<td>' + pool.scale(el.cur2max_percent) + '</td>' +
+                            '</tr>';
+                    });
+                    $(document).find('#sha_pool_rows').html(output);
                 });
-                $(document).find('#sha_pool_rows').html(output);
-                $('#sha-row').find('.fa-cog').closest('a').after('<a data-toggle="modal" data-target="#shaModal"><i class="fa fa-pie-chart fa-lg" style="color: #f5b35c"></i></a>');
-                pool.app.log(pool.constructor.name + " loaded in: " + (new Date().getTime() - pool.runDate) + " ms.");
             });
+            pool.app.log(pool.constructor.name + " loaded in: " + (new Date().getTime() - pool.runDate) + " ms.");
         });
     }
 

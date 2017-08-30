@@ -36,6 +36,7 @@
         eng: 'English',
         rus: 'Russian',
         ita: 'Italiano',
+        por: 'Portuguese',
         ind: 'Indonesia',
         modulesSetting: 'Modul untuk inisiasi',
         revenueShaForecast: 'Hari yang dibutuhkan untuk menghitung perkiraan pembayaran SHA',

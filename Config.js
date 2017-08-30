@@ -120,6 +120,21 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
         applicationModules.push({
             module: 'LastAvgBtc'
         });
+        /*
+        $.ajax({url: 'https://www.coingecko.com/en/chart/bitcoin/usd.json', async: false}).done(function(data) {
+            let dates = {};
+            for(var i = 0; i < data.stats.length; i++) {
+                if (data.stats[i][0] < 1388534400000) {
+                    continue;
+                }
+                dates[moment(data.stats[i][0]).format('DD.MM.YY')] = data.stats[i][1];
+            }
+
+        });
+        */
+        applicationModules.push({
+            module: 'PaybackBtc'
+        });
     }
 
 
@@ -166,7 +181,6 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
     }
 
     // Run application
-
     (new Application(applicationConfig)).run();
 
 });

@@ -244,6 +244,123 @@ class Application
     }
 
     /**
+     * Initialize withdrawals collection.
+     */
+    initWithdrawals()
+    {
+        let time = new Date().getTime();
+        var table = $(this.historyPage).find('table').eq(2);
+        let app = this;
+
+        // Each all rows
+        $(table).find("tr").each(function(i, v){
+
+            let row = [];
+            let valid = true;
+
+            // Each all cols
+            $(this).children('td').each(function(j, vv){
+                let text = '';
+                // If date
+                if (j === 1) {
+                    text = $(this).text();
+                    text = text.substr(0, 8);
+                } else if (j === 3) {
+                    text = $(this).html();
+                    if (text.indexOf('text-success') + 1 == 0) {
+                        valid = false;
+                    }
+                } else {
+                    text = $(this).text();
+                }
+                row[j] = text;
+            });
+
+            // Add item to collection
+            if (row.length > 0 && valid) {
+                let type = app.getWithdrawalType(row[2]);
+                let amount =  parseFloat(row[2]);
+                let date = row[1];
+                app.withdrawals.addItem(new WithdrawalItem(date, type, amount));
+            }
+        });
+        this.log("Withdrawals init in " + (new Date().getTime() - time) + " ms.");
+        this.withdrawalsInit = 1;
+    }
+
+    getWithdrawalType(text)
+    {
+        if (text.indexOf('BTC') + 1 > 0) {
+            return WithdrawalItem.typeBTC;
+        } else if (text.indexOf('DASH') + 1 > 0) {
+            return WithdrawalItem.typeDASH;
+        } else if (text.indexOf('ETH') + 1 > 0) {
+            return WithdrawalItem.typeETH;
+        }
+    }
+
+    /**
+     * Initialize purchases collection.
+     */
+    initPurchases()
+    {
+        let time = new Date().getTime();
+        var table = $(this.historyPage).find('table').eq(1);
+        let app = this;
+
+        // Each all rows
+        $(table).find("tr").each(function(i, v){
+
+            let row = [];
+            let valid = true;
+
+            // Each all cols
+            $(this).children('td').each(function(j, vv){
+                let text = '';
+                // If date
+                if (j === 5) {
+                    text = $(this).text();
+                    text = text.substr(0, 8);
+                } else if (j === 6) {
+                    text = $(this).html();
+                    if (text.indexOf('text-success') + 1 == 0) {
+                        valid = false;
+                    }
+                } else {
+                    text = $(this).text();
+                }
+                row[j] = text;
+            });
+
+            // Add item to collection
+            if (row.length > 0 && valid) {
+                let type = app.getPurchaseType(row[1]);
+                let quantity = parseFloat(row[2]);
+                let paid =  parseFloat(row[3].replace(',', ''));
+                let method = (row[4].indexOf('balance transfer') + 1) ? PurchaseItem.methodBalance: PurchaseItem.methodPaysystems;
+                let date = row[5];
+                app.purchases.addItem(new PurchaseItem(date, type, quantity, paid, method));
+            }
+        });
+        this.log("Purchases init in " + (new Date().getTime() - time) + " ms.");
+        this.purchasesInit = 1;
+    }
+
+    getPurchaseType(text)
+    {
+        if (text.indexOf('X11') + 1 > 0) {
+            return PurchaseItem.typeDASH;
+        } else if (text.indexOf('SHA-256') + 1 > 0) {
+            return PurchaseItem.typeSHA;
+        } else if (text.indexOf('Scrypt') + 1 > 0) {
+            return PurchaseItem.typeSCRYPT;
+        } else if (text.indexOf('ETHASH') + 1 > 0) {
+            return PurchaseItem.typeETH;
+        }
+        this.log("Unknown type: " + text);
+    }
+
+    /**
      * Initialize payouts collection.
      */
     initPayouts()
@@ -252,10 +369,6 @@ class Application
 
         // Get table
         var table = $(this.historyPage).find('table').last();
-        if ($(table).length == 0) {
-            this.payoutsInit = true;
-            return;
-        }
 
         var data = {};
 
@@ -335,7 +448,6 @@ class Application
             }
 
         };
-        console.log(app.payouts);
         this.log("Payouts init in " + (new Date().getTime() - time) + " ms.");
         this.payoutsInit = true;
     }

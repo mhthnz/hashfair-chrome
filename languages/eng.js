@@ -36,6 +36,7 @@
         eng: 'English',
         rus: 'Russian',
         ita: 'Italiano',
+        por: 'Portuguese',
         ind: 'Indonesia',
         modulesSetting: 'Modules for initiate',
         revenueShaForecast: 'Number of days to calculate SHA revenue forecast',
@@ -60,6 +61,24 @@
         ShaForecast: 'Show clear SHA revenue forecast.',
         ShaHashrate: 'Show clear SHA hashrate for now.',
         ShaPools: 'Show sha pools hashrate.',
-        ScryptPools: 'Show scrypt pools hashrate.'
+        ScryptPools: 'Show scrypt pools hashrate.',
+        PaybackBtc: "Calculate the payback of contracts bitcoins."
+    },
+    payback: {
+        btc_payback: 'BTC Payback',
+        purchases: 'Purchases',
+        number_of_purchases: 'Number of purchases',
+        total_invested: 'Total funds invested',
+        invested_without_reinvest: 'Invested without reinvest',
+        withdrawals: 'Withdrawals',
+        number_of_withdrawals: 'Number of withdrawals',
+        total_out_amount: 'Total out amount',
+        amount_with_comission: 'Amount with comission',
+        payback: 'Payback',
+        payback_percent: 'Payback percent',
+        payback_percent_with_comssion: 'Payback percent (with comission)',
+        payback_without_reinvest: 'Payback (without reinvest)',
+        payback_complete: 'Payback finished in',
+        payback_complete_days: '{days} d.',
     }
 }

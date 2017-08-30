@@ -36,6 +36,7 @@
         eng: 'English',
         rus: 'Русский',
         ita: 'Italiano',
+        por: 'Portuguese',
         ind: 'Indonesia',
         modulesSetting: 'Запускаемые модули',
         revenueShaForecast: 'Количество дней для учета в прогнозе доходности SHA',
@@ -61,5 +62,22 @@
         ShaHashrate: 'Показывает чистый хэшрейт для SHA.',
         ShaPools: 'Показывает хэшрейт SHA пуллов.',
         ScryptPools: 'Показывает хэшрейт SCRYPT пуллов.'
+    },
+    payback: {
+        btc_payback: 'BTC Окупаемость',
+        purchases: 'Ввод средств',
+        number_of_purchases: 'Кол-во вводов',
+        total_invested: 'Всего инвестировано',
+        invested_without_reinvest: 'Без учета реинвеста',
+        withdrawals: 'Выплаты',
+        number_of_withdrawals: 'Кол-во выплат',
+        total_out_amount: 'Всего выплачено',
+        amount_with_comission: 'С учетом комиссии',
+        payback: 'Окупаемость',
+        payback_percent: 'Окупилось',
+        payback_percent_with_comssion: 'Окупилось (с учетом комиссии)',
+        payback_without_reinvest: 'Окупаемость (без реинвеста)',
+        payback_complete: 'Окупится через',
+        payback_complete_days: '{days} дн.',
     }
 }
