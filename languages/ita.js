@@ -60,5 +60,22 @@
         ShaChart: 'Visualizza il grafico di entrate nette di 1TH/s di SHA',
         ShaForecast: 'Visualizza le previsioni di entrate nette per SHA.',
         ShaHashrate: 'Visualizza l\'hashrate netto attuale di SHA.'
+    },
+    payback: {
+        btc_payback: 'BTC Payback',
+        purchases: 'Acquisti',
+        number_of_purchases: 'Numero di acquisti',
+        total_invested: 'FOndi totali investiti',
+        invested_without_reinvest: 'Investiti senza modalità di re-investimento',
+        withdrawals: 'Prelievi',
+        number_of_withdrawals: 'Numero di prelievi',
+        total_out_amount: 'Total out amount',
+        amount_with_comission: 'Quantità con commissioni',
+        payback: 'Payback',
+        payback_percent: 'Percentuale di payback',
+        payback_percent_with_comssion: 'Percentuale di payback (con commissioni)',
+        payback_without_reinvest: 'Payback (senza modalità di re-investimento)',
+        payback_complete: 'Payback completato in',
+        payback_complete_days: '{days} giorni',
     }
 }
