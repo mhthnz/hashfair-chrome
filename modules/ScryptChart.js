@@ -6,9 +6,9 @@ class ScryptChart {
      * @param  object|null dependency   If isset - object, else - null
      */
     constructor(app, dependency = null) {
-        app.log("Init ShaChart class.");
         this.app = app;
         this.dependency = dependency;
+        this.runDate = new Date().getTime();
     }
 
     /**
@@ -22,6 +22,7 @@ class ScryptChart {
         }
         $("#flot-profit-scrypt").empty();
         $.plot($("#flot-profit-scrypt"), data, this.makeChartOptions());
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
     }
 
     makeChartData() {

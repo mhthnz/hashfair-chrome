@@ -11,9 +11,9 @@ class LastAvgBtc
 	 */
 	constructor(app, dependency = null) 
 	{
-		app.log("Init LastAvgBtc class.");
 		this.app = app;
 		this.dependency = dependency;
+        this.runDate = new Date().getTime();
 	}
 
     /**
@@ -34,6 +34,7 @@ class LastAvgBtc
         $(target).find('.p-xxs').css('background-color', '#f5b35c');
         $(target).find('h3').html(parseFloat(result).toFixed(8) + ' BTC &nbsp; <span class="badge badge-warning">$' + (parseFloat(result) * this.app.btcPrice).toFixed(2) + '</span>');
         $(target).find('small').text(translate.t('UI', 'DailyAverage', {days: 14}));
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
 	}
 
 	makeStat(days)

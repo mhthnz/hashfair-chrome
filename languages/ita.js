@@ -5,9 +5,23 @@
         LastSummaryBtc: 'L\'ultimo pagamento (SHA, SCRYPT)',
         DailyAverage: 'Media giornaliera sul periodo di {days} giorni (SHA, SCRYPT)'
     },
+    charts: {
+        payout: 'Pagamento',
+        maintenance: 'Tassa di mantenimento'
+    },
+    pools: {
+        pool: 'Pool',
+        hashrate: 'Hashrate',
+        lucky: 'Lucky',
+        your_share: 'Il tuo share',
+        distribution: 'Distribuzione',
+        sha_header: 'Hashrate della pool SHA',
+        scrypt_header: 'Hashrate della pool Scrypt',
+        blocks_per_hour: 'Blocchi per ora'
+    },
     donate: {
         title: 'Chi sono :)',
-        start_text: 'Sono lo sviluppatore di questo plugin. Lavoro sul plugin volontariamente. Sono motivato dalle vostre donazioni e grazie.',
+        start_text: 'Sono lo sviluppatore di questo plugin e lavoro sul plugin volontariamente; sono motivato dalle vostre donazioni, grazie.',
         help_me: 'Puoi ringraziarmi in diversi modi',
         github: 'Puoi votare il plugin o eseguire un fork in {url}',
         chrome_market: 'Puoi votare in {url}',
@@ -22,6 +36,8 @@
         eng: 'Inglese',
         rus: 'Russo',
         ita: 'Italiano',
+        por: 'Portoghese',
+        ind: 'Indonesiano',
         modulesSetting: 'Moduli da inizializzare',
         revenueShaForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
         revenueScryptForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',

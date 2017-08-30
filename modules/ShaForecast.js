@@ -6,9 +6,10 @@ class ShaForecast {
      * @param  object|null dependency   If isset - object, else - null
      */
     constructor(app, dependency = null) {
-        app.log("Init ShaForecast class.");
         this.app = app;
         this.dependency = dependency;
+
+        this.runDate = new Date().getTime();
 
         /**
          * Days for forecast
@@ -46,6 +47,7 @@ class ShaForecast {
         $(forecasts).find('p:nth(2)').html(this.forecast((result*30), '1m'));
         $(forecasts).find('p:nth(3)').html(this.forecast((result*30*6), '6m'));
         $(forecasts).find('p:nth(4)').html(this.forecast((result*30*12), '1y'));
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
     }
 
     /**

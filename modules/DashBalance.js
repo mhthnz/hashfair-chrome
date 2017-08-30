@@ -11,9 +11,9 @@ class DashBalance
 	 */
 	constructor(app, dependency = null) 
 	{
-		app.log("Init DashBalance class.");
 		this.app = app;
 		this.dependency = dependency;
+        this.runDate = new Date().getTime();
 	}
 
     /**
@@ -41,6 +41,7 @@ class DashBalance
                 $(last).html(lastText);
             }
         }
+        this.app.log(this.constructor.name + " loaded in: " + (new Date().getTime() - this.runDate) + " ms.");
 	}
 
     /**
