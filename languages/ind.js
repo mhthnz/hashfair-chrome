@@ -61,5 +61,22 @@
         ShaHashrate: 'Hashrate SHA saat ini',
         ShaPools: 'Hashrate pool SHA',
         ScryptPools: 'Hashrate pool SCRYPT'
-    }
+    },
+     payback: {
+        btc_payback: 'Pembayaran BTC',
+        purchases: 'Pembelian',
+        number_of_purchases: 'Jumlah pembelian',
+        total_invested: 'Total investasi',
+        invested_without_reinvest: 'Investasi tanpa reinvest',
+        withdrawals: 'Penarikan',
+        number_of_withdrawals: 'Jumlah penarikan',
+        total_out_amount: 'Total jumlah keluar',
+        amount_with_comission: 'Jumlah berikut komisi',
+        payback: 'Pembayaran',
+        payback_percent: 'Persentase pembayaran',
+        payback_percent_with_comssion: 'Persentase pembayaran berikut komisi',
+        payback_without_reinvest: 'Pembayaran tanpa reinvest',
+        payback_complete: 'Pembayaran selesai dalam',
+        payback_complete_days: '{days} hari.',
+    }       
 }
