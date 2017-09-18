@@ -1,4 +1,4 @@
-# Hashfair-reborn: 
+# Hashfair-reborn v2.2: 
     Analytics for HashFlare cloud mining. 
  	Supplement that shows real income on site hashflare.io. 
  	Automatically changes the charts and payout data on the page: https://hashflare.io/panel. 
@@ -8,6 +8,12 @@
 ##### Install via chrome market:
 [https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh](https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh)
 ##### Or you can download archive and install via developer mode in google chrome.
+
+# What's new in version 2.2?
+ - Performance(loading in 2 times faster)
+ - Many modules are optimized
+ - Added payback module
+ - Added 2 new languages `Indonesian` and `Portuguese` (Thank `@firemanxbr` and `@gpl4all`)
 
 # What's news in version 2.1?
  - Improved performance and bug fixes
