@@ -1,0 +1,17 @@
+Extension "Hashfair reborn" uses some personal information from the site account hashflare.io such as:
+* Access to history page (/panel/history) via ajax request;
+* Processing data in background;
+* Access to panel (/panel);
+* Extension can change the page view;
+* Save custom settings in storage such as: language, modules, forecast range.
+
+Extension "Hashfair reborn" sends requests for external services such as:
+* https://*.btc.com/* (https://btc.com/stats/api/realtime/poolHashrate) - to get btc pools stat;
+* https://www.coingecko.com/en/chart/* - to get btc price history;
+* https://www.litecoinpool.org/pools - to get litecoin pools stat;
+* https://api.cryptonator.com/api/ticker/* (https://api.cryptonator.com/api/ticker/dash-usd, https://api.cryptonator.com/api/ticker/eth-usd) - to get price in usd for cryptocurrencies;
+
+Extension "Hashfair reborn" never:
+* Does not change account information;
+* Does not perform unauthorized actions with the account;
+* Do not disclose information about the user to third parties.
