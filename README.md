@@ -9,6 +9,12 @@
 [https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh](https://chrome.google.com/webstore/detail/hashfair-reborn/ogiegfgghlangemlggeoogaadkebmibh)
 ##### Or you can download archive and install via developer mode in google chrome.
 
+# What's new in version 2.3?
+ - Fixed scrypt pools stat
+ - Fixed options page
+ - Added `Ukrainian` and `Turkish` languages (Thank `@muratgul` and `@AndriyGusak`)
+ - Fixed some languages
+
 # What's new in version 2.2?
  - Performance(loading in 2 times faster)
  - Many modules are optimized

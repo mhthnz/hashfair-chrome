@@ -29,7 +29,7 @@
    "name": "HashFair reborn",
    "permissions": [ "https://hashflare.io/panel", "https://*.btc.com/*", "https://www.coingecko.com/en/chart/*", "https://www.litecoinpool.org/pools","https://api.cryptonator.com/api/ticker/*", "tabs", "activeTab", "background", "storage" ],
    "short_name": "Analytics for HashFlare cloud mining.",
-   "version": "2.2",
+   "version": "2.3",
    "web_accessible_resources": [ "modals/*", "images/*", "modules/*", "languages/*" ],
    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
