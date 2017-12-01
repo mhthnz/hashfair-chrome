@@ -30,9 +30,11 @@ class ScryptPools {
                 }
 
                 $.ajax('https://www.litecoinpool.org/pools').done(function(data) {
+
                     // Pools table and blocks table
                     var table = $(data).find('tr.minor-row').closest('table');
                     var blocks = $(data).find('td.nowrap').closest('table');
+
 
                     // Calculate start date and end date, get difference
                     var startDate = moment($(blocks).find('tr').has("td.nowrap").first().html(), 'YYYY-MM-DD HH:mm');
@@ -41,7 +43,7 @@ class ScryptPools {
 
                     // Create data object
                     var pools = [];
-                    $.each($(table).find('tr').has('td > span'), function(i, element) {
+                    $.each($(table).find('tr').has('td > div'), function(i, element) {
                         var pool = $(element).find('td:eq(1)').text();
                         pools.push({
                             pool: pool,
@@ -63,13 +65,6 @@ class ScryptPools {
                     $('#scrypt_pool_rows').html(output);
 
                 });
-            });
-
-            $('#scryptModal').on('show.bs.modal',  function () {
-alert(1);
-
-
-
             });
 
             current.app.log(current.constructor.name + " loaded in: " + (new Date().getTime() - current.runDate) + " ms.");
