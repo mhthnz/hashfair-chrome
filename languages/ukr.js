@@ -39,6 +39,7 @@
         por: 'Portuguese',
         ind: 'Indonesia',
         ukr: 'Українська',
+        trk: 'Türkçe',
         modulesSetting: 'Модулі, що запускаються',
         revenueShaForecast: 'Кількість днів для обліку в прогнозі дохідності SHA',
         revenueScryptForecast: 'Кількість днів для обліку в прогнозі дохідності SCRYPT',

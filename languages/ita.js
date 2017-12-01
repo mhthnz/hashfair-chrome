@@ -38,6 +38,8 @@
             ita: 'Italiano',
             por: 'Portoghese',
             ind: 'Indonesiano',
+            ukr: 'Українська',
+            trk: 'Türkçe',
             modulesSetting: 'Moduli da inizializzare',
             revenueShaForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',
             revenueScryptForecast: 'Numero di giorni per calcolare la previsione di guadagno per SHA-256',

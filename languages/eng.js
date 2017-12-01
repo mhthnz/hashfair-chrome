@@ -38,6 +38,8 @@
         ita: 'Italiano',
         por: 'Portuguese',
         ind: 'Indonesia',
+        ukr: 'Українська',
+        trk: 'Türkçe',
         modulesSetting: 'Modules for initiate',
         revenueShaForecast: 'Number of days to calculate SHA revenue forecast',
         revenueScryptForecast: 'Number of days to calculate SCRYPT revenue forecast',
