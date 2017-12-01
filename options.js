@@ -48,7 +48,7 @@ $(document).ready(function () {
                 if (module == 'Donate') {
                     continue;
                 }
-                modulesCode += '<label title="{modules:'+module+'}"><input type="checkbox" title="{modules:'+module+'}" name="' + module + '" '+(options.modules.includes(module) ? 'checked="checked"' : '')+'/>'+module+'</label><br/>';
+                modulesCode += '<label title="{modules:'+module+'}"><input type="checkbox" title="{modules:'+module+'}" name="' + module + '" '+((options.modules.length == 0 || options.modules.includes(module)) ? 'checked="checked"' : '')+'/>'+module+'</label><br/>';
             }
             let code = `
             <div class="item modules">
@@ -76,6 +76,11 @@ $(document).ready(function () {
                     }
                 }
             });
+
+            // Add modules to array if not set
+            if (options.modules.length == 0) {
+                $('input[type="checkbox"]').trigger("change");
+            }
         });
 
         // Average
