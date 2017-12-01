@@ -38,7 +38,7 @@
         ita: 'Italiano',
         por: 'Portuguese',
         ind: 'Indonesia',
-        tur: 'Türkçe',
+        trk: 'Türkçe',
         modulesSetting: 'Başlatma modülleri',
         revenueShaForecast: 'SHA gelir tahmini hesaplamak için gün sayısı',
         revenueScryptForecast: 'SYCRPT gelir tahmini hesaplamak için gün sayısı',
