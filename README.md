@@ -1,4 +1,4 @@
-# Hashfair-reborn v2.2: 
+# Hashfair-reborn v2.3: 
     Analytics for HashFlare cloud mining. 
  	Supplement that shows real income on site hashflare.io. 
  	Automatically changes the charts and payout data on the page: https://hashflare.io/panel. 
