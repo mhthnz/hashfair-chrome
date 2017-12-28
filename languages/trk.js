@@ -52,6 +52,7 @@
         BalanceChart: 'Net bakiye grafiğini göster.',
         DashBalance: 'Dash bakiyesini usd olarak göster.',
         EthBalance: 'ETH bakiyesini usd olarak göster.',
+        ZecBalance: 'ZEC bakiyesini usd olarak göster.',
         LastAvgBtc: 'Günlük ortalamayı göster.',
         LastScryptPayout: 'Son net scrypt ödemesini göster.',
         LastShaPayout: 'Son net sha ödemesini göster.',

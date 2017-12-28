@@ -52,6 +52,7 @@
         BalanceChart: 'Відображає чистий прибуток на графіку балансу.',
         DashBalance: 'Відображає DASH баланс в доларах.',
         EthBalance: 'Відображає ETH баланс в доларах.',
+        ZecBalance: 'Відображає ZEC баланс в доларах.',
         LastAvgBtc: 'Відображає середню виплату Scrypt и SHA за 14 днів.',
         LastScryptPayout: 'Відображає останню чисту виплату Scrypt.',
         LastShaPayout: 'Відображає останню чисту виплату SHA.',

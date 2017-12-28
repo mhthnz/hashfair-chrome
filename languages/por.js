@@ -52,6 +52,7 @@
             BalanceChart: 'Mostrar o gráfico líquido no balanço.',
             DashBalance: 'Mostrar o balanço de dash em usd.',
             EthBalance: 'Mostrar o balanço de eth em usd.',
+            ZecBalance: 'Mostrar o balanço de zec em usd.',
             LastAvgBtc: 'Mostrar média diária.',
             LastScryptPayout: 'Mostrar o último pagamento líquido de scrypt.',
             LastShaPayout: 'Mostrar o último pagamento líquido de sha.',
