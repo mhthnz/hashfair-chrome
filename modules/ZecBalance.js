@@ -70,7 +70,7 @@ class ZecBalance
 	}
 
     /**
-	 * Get cryptonator dash price.
+	 * Get cryptonator zec price.
      * @returns {float|boolean}
      */
 	getCryptonatorPrice()
