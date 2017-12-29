@@ -52,6 +52,7 @@
             BalanceChart: 'Visualizza il grafico del bilancio netto.',
             DashBalance: 'Visualizza il bilancio di Dash in USD.',
             EthBalance: 'Visualizza il bilancio di Eth in USD.',
+            ZecBalance: 'Visualizza il bilancio di Zec in USD.',
             LastAvgBtc: 'Visualizza la media giornaliera.',
             LastScryptPayout: 'Visualizza l\'ultimo payout scrypt.',
             LastShaPayout: 'Visualizza l\'ultimo pagamento netto di SHA-256.',

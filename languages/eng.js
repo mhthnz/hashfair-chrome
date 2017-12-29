@@ -52,6 +52,7 @@
         BalanceChart: 'Show clear balance chart.',
         DashBalance: 'Show dash balance in usd.',
         EthBalance: 'Show eth balance in usd.',
+        ZecBalance: 'Show zec balance in usd.',
         LastAvgBtc: 'Show daily average.',
         LastScryptPayout: 'Show clear last scrypt payout.',
         LastShaPayout: 'Show clear last sha payout.',

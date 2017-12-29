@@ -98,7 +98,7 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
         }
     }
 
-    // Parse dash hashrate
+    // Parse eth hashrate
     let eth_block = $('#ether-row').find('h3.no-margins');
     let eth_total_hashrate = 0;
     if ($(eth_block).length) {
@@ -108,6 +108,20 @@ $.ajax('https://hashflare.io/panel/history').done(function (content) {
         if (eth_total_hashrate > 0) {
             applicationModules.push({
                 module: 'EthBalance'
+            });
+        }
+    }
+
+    // Parse zec hashrate
+    let zec_block = $('#zcash-row').find('h3.no-margins');
+    let zec_total_hashrate = 0;
+    if ($(zec_block).length) {
+        zec_total_hashrate = parseFloat($(zec_block).parent('div').find('h1').html());
+
+        // Add dependent modules from eth hashrate
+        if (zec_total_hashrate > 0) {
+            applicationModules.push({
+                module: 'ZecBalance'
             });
         }
     }

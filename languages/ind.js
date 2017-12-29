@@ -52,6 +52,7 @@
             BalanceChart: 'Chart saldo',
             DashBalance: 'Saldo dash dalam USD.',
             EthBalance: 'Saldo ETH dalam USD.',
+            ZecBalance: 'Saldo ZEC dalam USD.',
             LastAvgBtc: 'Rata-rata harian BTC',
             LastScryptPayout: 'Pembayaran Scrypt terakhir',
             LastShaPayout: 'Pembayaran SHA terakhir',
