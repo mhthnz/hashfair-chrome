@@ -1,0 +1,87 @@
+{
+    UI: {
+        Close: 'Schließen',
+        AboutMe: 'Über mich',
+        LastSummaryBtc: 'Letzte Zusammenfassung btc Auszahlung (SHA, SCRYPT)',
+        DailyAverage: 'Täglicher Durchschnitt {days} Tage Zeitraum (SHA, SCRYPT)'
+    },
+    charts: {
+        payout: 'Auszahlung',
+        maintenance: 'Tages Gebühr'
+    },
+    pools: {
+        pool: 'Pool',
+        hashrate: 'Hashrate',
+        lucky: 'Glück',
+        your_share: 'Du teilst',
+        distribution: 'Verteilung',
+        sha_header: 'Sha Pools Hashrate',
+        scrypt_header: 'Scrypt Pools Hashrate',
+        blocks_per_hour: 'Blocks pro Stunde'
+    },
+    donate: {
+        title: 'Über mich :)',
+        start_text: 'I am the developer of this plugin. I\'m working on a plugin on a voluntary basis. I am motivated by your donations and thanks.',
+        help_me: 'You can thank me in several ways',
+        github: 'You can starred me and forked on {url}',
+        chrome_market: 'You can starred me in {url}',
+        btc: 'You can send me some bitcoins on wallet: <b>19VWsFYgh9eB6j42A1kg6yyWmRePyQQrRv</b>',
+        telegram: 'You can thank me personally in telegram: <b><a target="_blank" href="https://t.me/mhthnz">@mhthnz</a></b>',
+        thank: 'Thanks to all who responded <b style="color:red;"><3</b>'
+    },
+    settings: {
+        settings: 'Plugin Einstellungen',
+        languageSetting: 'Sprache Einstellungen',
+        autodetectLanguage: 'Sprache automatisch erkennen ',
+        eng: 'English',
+		ger: 'Deutsch',
+        rus: 'Russian',
+        ita: 'Italiano',
+        por: 'Portuguese',
+        ind: 'Indonesia',
+        ukr: 'Українська',
+        trk: 'Türkçe',
+        modulesSetting: 'Module für initiiert',
+        revenueShaForecast: 'Anzahl der Tage zur Berechnung der SHA-Umsatzprognose',
+        revenueScryptForecast: 'Anzahl der Tage zur Berechnung der SCRYPT-Umsatzprognose',
+        days: '{days} d.',
+        save: 'Speichern',
+        settingsSaved: 'Einstellungen Gespeichert'
+    },
+    modules: {
+        Balance: 'Show Balance und Bitcoin Preis.',
+        BalanceChart: 'Zeige ein klares Balancendiagramm.',
+        DashBalance: 'Zeige dash balance in usd.',
+        EthBalance: 'Zeige eth balance in usd.',
+        LastAvgBtc: 'Zeige täglichen Durchschnitt.',
+        LastScryptPayout: 'Zeigt die letzte Scrypt-Auszahlung an.',
+        LastShaPayout: 'Zeige letzte Sha Auszahlung.',
+        LastSummaryBtcPayout: 'Letzte Auszahlung (SHA + SCRYPT).',
+        ScryptChart: 'Zeige SCRYPT-Chart-Erlöse pro 1 MH/s.',
+        ScryptForecast: 'Zeige SCRYPT Umsatzprognose.',
+        ScryptHashrate: 'Zeige klare SCRYPT-Hashrate.',
+        ShaChart: 'Zeige SHA-Chart-Erlöse pro 1 TH / s.',
+        ShaForecast: 'Zeige SHA Umsatzprognose',
+        ShaHashrate: 'Zeige klare SHA-Hashrate.',
+        ShaPools: 'Zeige sha pools hashrate.',
+        ScryptPools: 'Zeige scrypt pools hashrate.',
+        PaybackBtc: "Berechnen Sie die Rückzahlung von Verträgen Bitcoins."
+    },
+    payback: {
+        btc_payback: 'BTC Rückzahlung',
+        purchases: 'Einkäufe',
+        number_of_purchases: 'Anzahl der Einkäufe',
+        total_invested: 'Total investiertes Geld',
+        invested_without_reinvest: 'Investiert ohne zu reinvestieren',
+        withdrawals: 'Abhebungen',
+        number_of_withdrawals: 'Insgesamt an Abhebungen',
+        total_out_amount: 'Alle Auszahlungen',
+        amount_with_comission: 'Betrag mit Provision',
+        payback: 'Rückzahlung',
+        payback_percent: 'Zurückgezahlt in Prozent',
+        payback_percent_with_comssion: 'Zurückgezahlt in Prozent (mit Provision)',
+        payback_without_reinvest: 'Zurückgezahlt (ohne Reinvestition)',
+        payback_complete: 'Amortisation in',
+        payback_complete_days: '{days} d.',
+    }
+}
