@@ -1,0 +1,88 @@
+{
+    UI: {
+        Close: '閉じる',
+        AboutMe: 'HashFairについて',
+        LastSummaryBtc: 'BTC払い出しの最新サマリー(SHA, SCRYPT)',
+        DailyAverage: '{days}日間の平均値(SHA, SCRYPT)'
+    },
+    charts: {
+        payout: '払い出し',
+        maintenance: 'メンテナンス'
+    },
+    pools: {
+        pool: 'プール',
+        hashrate: 'ハッシュレート',
+        lucky: 'Lucky',
+        your_share: '割合',
+        distribution: '分布',
+        sha_header: 'SHAプールハッシュレート',
+        scrypt_header: 'Scryptプールハッシュレート',
+        blocks_per_hour: '1時間当たりのブロック数'
+    },
+    donate: {
+        title: '著者について :)',
+        start_text: 'このプラグインの作者です。ボランティアでこのプラグインを開発しています。あなたの寄付が励みになります。',
+        help_me: 'いくつかの方法で貢献できます',
+        github: '{url}でStarを付与してください。',
+        chrome_market: '{url}で高評価をしてください。',
+        btc: 'ビットコインで寄付をしてください: <b>19VWsFYgh9eB6j42A1kg6yyWmRePyQQrRv</b>',
+        telegram: 'テレグラム上で感謝を表明してください: <b><a target="_blank" href="https://t.me/mhthnz">@mhthnz</a></b>',
+        thank: '対応してくださった全ての方々に感謝します。 <b style="color:red;"><3</b>'
+    },
+    settings: {
+        settings: 'プラグイン設定',
+        languageSetting: '言語設定',
+        autodetectLanguage: '言語を自動検出する',
+        eng: 'English',
+        rus: 'Russian',
+        ita: 'Italiano',
+        por: 'Portuguese',
+        ind: 'Indonesia',
+        ukr: 'Укра?нська',
+        trk: 'Turkce',
+        jpn: '日本語',
+        modulesSetting: '実行するモジュールを選択',
+        revenueShaForecast: 'SHA収益見積もりを計算するための日数',
+        revenueScryptForecast: 'SCRYPT収益見積もりを計算するための日数',
+        days: '{days} 日',
+        save: '保存',
+        settingsSaved: '設定が保存されました'
+    },
+    modules: {
+        Balance: '残高とビットコイン価格を表示',
+        BalanceChart: '残高チャートを表示',
+        DashBalance: 'DASH残高をUSDで表示',
+        EthBalance: 'ETHの残高をUSDで表示',
+        ZecBalance: 'ZECの残高をUSDで表示',
+        LastAvgBtc: '平均値を表示',
+        LastScryptPayout: 'Scryptの最新払い出しを表示',
+        LastShaPayout: 'SHAの最新払い出しを表示',
+        LastSummaryBtcPayout: '最新払い出しのサマリー(SHA + SCRYPT)を表示',
+        ScryptChart: '1 MH/sあたりのSCRYPT収益チャートを表示',
+        ScryptForecast: 'SCRYPT収益見積もりを表示',
+        ScryptHashrate: '現在のSCRYPTハッシュレートを表示',
+        ShaChart: '1 TH/sあたりのSHA収益チャートを表示',
+        ShaForecast: 'SHA収益見積もりを表示',
+        ShaHashrate: '現在のSHAハッシュレートを表示',
+        ShaPools: 'SHAプールのハッシュレートを表示',
+        ScryptPools: 'SCRYPTプールのハッシュレートを表示',
+        PaybackBtc: "ビットコイン契約の投資回収期間を計算"
+    },
+    payback: {
+        btc_payback: 'BTC投資回収',
+        purchases: '購入',
+        number_of_purchases: '購入回数',
+        total_invested: '総投資',
+        invested_without_reinvest: '総投資(再投資除く)',
+        withdrawals: '引き出し',
+        number_of_withdrawals: '引き出し回数',
+        total_out_amount: '総引き出し数',
+        amount_with_comission: 'アフィリエイト報酬',
+        payback: '投資回収',
+        payback_percent: '投資回収率',
+        payback_percent_with_comssion: '投資回収率(アフィリエイト報酬込)',
+        payback_without_reinvest: '投資回収(再投資除く)',
+        payback_complete: '投資回収完了',
+        payback_complete_days: '{days} 日',
+    }
+}
